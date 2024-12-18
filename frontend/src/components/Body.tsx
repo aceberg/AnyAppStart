@@ -21,7 +21,7 @@ function Body() {
       <table className="table">
         <tbody>
         {items.map((item) => (
-          <tr key={item.DName}>
+          <tr key={item.Name}>
             <ItemShow item={item}></ItemShow>
           </tr>
         ))}

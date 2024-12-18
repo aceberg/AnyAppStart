@@ -56,6 +56,8 @@ func Gui(dirPath, nodePath string) {
 	router.StaticFS("/fs", http.FS(assetsFS))
 
 	router.GET("/api", apiHandler)        // api.go
+	router.GET("/api/conf", apiGetConfig) // api.go
+	router.GET("/api/exec", apiExec)      // api.go
 	router.GET("/api/items", apiGetItems) // api.go
 
 	err := router.Run(address)

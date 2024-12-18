@@ -1,0 +1,9 @@
+/* Transparant icon button */
+.shade-hover {
+    padding: 7px;
+    border-radius: 15%;
+}
+.shade-hover:hover {
+    background-color: #00000015;
+    cursor: pointer;
+}
