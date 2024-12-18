@@ -1,0 +1,12 @@
+[Unit]
+Description=QuickStart
+Documentation=https://github.com/aceberg/QuickStart
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/QuickStart -c /etc/QuickStart/config.yaml
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
