@@ -18,7 +18,7 @@ function Body() {
   return (
     <>
     <div className="container-lg mt-2">
-      <table className="table">
+      <table className="table table-striped">
         <tbody>
         {items.map((item) => (
           <tr key={item.Name}>

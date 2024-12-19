@@ -8,6 +8,7 @@ import (
 
 	"github.com/aceberg/QuickStart/internal/models"
 	"github.com/aceberg/QuickStart/internal/service"
+	"github.com/aceberg/QuickStart/internal/yaml"
 )
 
 func apiHandler(c *gin.Context) {
@@ -30,32 +31,22 @@ func apiExec(c *gin.Context) {
 	oneItem.Type = c.Query("type")
 	oneItem.Exec = c.Query("exec")
 
+	types := yaml.ReadTypes(appConfig.TypePath)
+	log.Println("TYPES", types)
+
 	log.Println("EXEC:", oneItem)
-	res, out := service.Exec(oneItem)
+	res, out := service.Exec(oneItem, types)
 	log.Println("OUT:", out)
 
 	c.IndentedJSON(http.StatusOK, res)
 }
 
 func apiGetItems(c *gin.Context) {
-	var oneItem models.Item
-	var items []models.Item
 
-	oneItem = models.Item{
-		Group: "Default",
-		Name:  "adminer",
-		Type:  "Docker",
-	}
+	items := yaml.Read(appConfig.ItemPath)
+	types := yaml.ReadTypes(appConfig.TypePath)
 
-	items = append(items, oneItem)
+	res := getStates(items, types)
 
-	oneItem = models.Item{
-		Group: "Default",
-		Name:  "gotify",
-		Type:  "Docker",
-	}
-
-	items = append(items, oneItem)
-
-	c.IndentedJSON(http.StatusOK, items)
+	c.IndentedJSON(http.StatusOK, res)
 }

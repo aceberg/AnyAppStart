@@ -8,7 +8,8 @@ type Conf struct {
 	Color    string
 	ConfPath string
 	DirPath  string
-	YamlPath string
+	ItemPath string
+	TypePath string
 	NodePath string
 }
 
@@ -17,5 +18,11 @@ type Item struct {
 	Group string `yaml:"group"`
 	Name  string `yaml:"name"`
 	Type  string `yaml:"type"`
-	Exec  string
+	Exec  string `yaml:"-"`
+	State string `yaml:"-"`
+}
+
+// OneType - one type and its execs
+type OneType struct {
+	ExecMap map[string]string `yaml:"exec"`
 }

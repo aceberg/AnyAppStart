@@ -35,8 +35,10 @@ func Gui(dirPath, nodePath string) {
 	appConfig.DirPath = dirPath
 	appConfig.ConfPath = confPath
 
-	appConfig.YamlPath = dirPath + "/items.yaml"
-	check.Path(appConfig.YamlPath)
+	appConfig.ItemPath = dirPath + "/items.yaml"
+	check.Path(appConfig.ItemPath)
+	appConfig.TypePath = dirPath + "/types.yaml"
+	check.Path(appConfig.TypePath)
 
 	log.Println("INFO: starting web gui with config", appConfig.ConfPath)
 

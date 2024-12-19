@@ -29,7 +29,7 @@ function Header() {
       <div className="container-lg">
         <div className='d-flex justify-content-between'>
           <h3 className="mt-2">QuickStart</h3>
-          <i className="bi bi-gear shade-hover fs-3" title="Settings"></i>
+          <i className="bi bi-gear shade-hover fs-3 text-primary" title="Settings"></i>
         </div>
       </div>
     </>

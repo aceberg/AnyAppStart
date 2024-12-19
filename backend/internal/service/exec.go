@@ -9,34 +9,26 @@ import (
 )
 
 // Exec - run commnd
-func Exec(item models.Item) (bool, string) {
+func Exec(item models.Item, typesMap map[string]models.OneType) (bool, string) {
 	var str string
 
-	if item.Type == "Docker" {
+	t, ok := typesMap[item.Type]
+	if ok {
+		str, ok = t.ExecMap[item.Exec]
+		if ok {
 
-		str = "/usr/bin/docker "
+			str = str + " " + item.Name
 
-		switch item.Exec {
-		case "Start":
-			str = str + "start "
-		case "Stop":
-			str = str + "stop "
-		case "Restart":
-			str = str + "restart "
-		case "Logs":
-			str = str + "logs "
+			log.Println("STR", str)
+			cmd := exec.Command("sh", "-c", str)
+
+			out, err := cmd.CombinedOutput()
+			str = string(out)
+			if !check.IfError(err) {
+				return true, str
+			}
 		}
-
-		str = str + item.Name
-		log.Println("STR:", str)
 	}
 
-	cmd := exec.Command("/bin/bash", "-c", str)
-
-	out, err := cmd.CombinedOutput()
-	if check.IfError(err) {
-		return false, string(out)
-	}
-
-	return true, string(out)
+	return false, str
 }
