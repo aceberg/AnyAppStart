@@ -19,7 +19,7 @@ func Exec(item models.Item, typesMap map[string]models.OneType) (bool, string) {
 
 			str = str + " " + item.Name
 
-			log.Println("STR", str)
+			log.Println("String to exec:", str)
 			cmd := exec.Command("sh", "-c", str)
 
 			out, err := cmd.CombinedOutput()

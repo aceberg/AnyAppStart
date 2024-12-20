@@ -26,27 +26,27 @@ func apiGetConfig(c *gin.Context) {
 
 func apiExec(c *gin.Context) {
 	var oneItem models.Item
+	type output struct {
+		Ok  bool
+		Out string
+	}
+	var data output
 
 	oneItem.Name = c.Query("name")
 	oneItem.Type = c.Query("type")
 	oneItem.Exec = c.Query("exec")
 
 	types := yaml.ReadTypes(appConfig.TypePath)
-	log.Println("TYPES", types)
 
-	log.Println("EXEC:", oneItem)
-	res, out := service.Exec(oneItem, types)
-	log.Println("OUT:", out)
+	data.Ok, data.Out = service.Exec(oneItem, types)
+	log.Println("EXEC DATA:", data)
 
-	c.IndentedJSON(http.StatusOK, res)
+	c.IndentedJSON(http.StatusOK, data)
 }
 
 func apiGetItems(c *gin.Context) {
 
 	items := yaml.Read(appConfig.ItemPath)
-	types := yaml.ReadTypes(appConfig.TypePath)
 
-	res := getStates(items, types)
-
-	c.IndentedJSON(http.StatusOK, res)
+	c.IndentedJSON(http.StatusOK, items)
 }

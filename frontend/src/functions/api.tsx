@@ -5,7 +5,6 @@ export interface Item {
     Name: string;
     Type: string;
     Exec: string;
-    State: string;
 };
 
 export interface Conf {
