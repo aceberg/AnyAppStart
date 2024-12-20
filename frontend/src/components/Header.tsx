@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { getConfig, Conf } from "../functions/api";
+import { getConfig, appConfig } from "../functions/api";
+import Config from "./Config";
 
 function Header() {
 
@@ -7,16 +8,11 @@ function Header() {
 
   useEffect(() => {
 
-    let config: Conf = {
-      Theme: "",
-      Color: ""
-    };
-
     const fetchData = async () => {
     
-      config = await getConfig();
+      await getConfig();
 
-      setPath("https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/"+config.Theme+"/bootstrap.min.css");
+      setPath("https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/"+appConfig.Theme+"/bootstrap.min.css");
     };
     
     fetchData();
@@ -24,12 +20,15 @@ function Header() {
 
   return (
     <>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"></link>
-      <link href={path} rel="stylesheet"></link>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"></link> {/* icons */}
+      <link href={path} rel="stylesheet"></link> {/* bootstrap+themes */}
       <div className="container-lg">
         <div className='d-flex justify-content-between'>
           <h3 className="mt-2">QuickStart</h3>
-          <i className="bi bi-gear shade-hover fs-3 text-primary" title="Settings"></i>
+          <div className='d-flex justify-content-between'>
+            <i className="bi bi-inboxes shade-hover fs-3 text-primary me-2" title="Types"></i>
+            <Config></Config>
+          </div>
         </div>
       </div>
     </>

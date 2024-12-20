@@ -32,7 +32,7 @@ function ItemShow(_props: any) {
         <Logs item={_props.item}></Logs>
       </td>
       <td>
-        <EditItem item={_props.item}></EditItem>
+        <EditItem item={_props.item} bodyUpd={_props.bodyUpd}></EditItem>
       </td>
     </>
   )

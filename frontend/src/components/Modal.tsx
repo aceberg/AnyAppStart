@@ -35,7 +35,7 @@ const BootstrapModal: React.FC<BootstrapModalProps> = ({
           <div className="modal-footer">
             <button 
               type="button" 
-              className="btn btn-secondary" 
+              className="btn btn-primary" 
               onClick={onClose}
             >
               Close

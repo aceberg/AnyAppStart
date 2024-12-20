@@ -24,6 +24,10 @@ func Exec(item models.Item, typesMap map[string]models.OneType) (bool, string) {
 
 			out, err := cmd.CombinedOutput()
 			str = string(out)
+			l := len(str)
+			if l > 10000 {
+				str = str[l-10000:]
+			}
 			if !check.IfError(err) {
 				return true, str
 			}

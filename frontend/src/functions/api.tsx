@@ -10,11 +10,24 @@ export interface Item {
 export interface Conf {
     Theme: string;
     Color: string;
+    NodePath: string;
+};
+
+export let appConfig:Conf = {
+    Theme: "",
+    Color: "",
+    NodePath: ""
+};
+
+export const setAppConfig = (conf:Conf) => {
+    appConfig = conf;
 };
 
 export const getConfig = async () => {
     const url = api+'/api/conf';
     const conf = await (await fetch(url)).json();
+
+    appConfig = conf;
   
     return conf;
 };
@@ -32,4 +45,14 @@ export const apiExec = async (item: Item) => {
     const res = await (await fetch(url)).json();
   
     return res;
-  };
+};
+
+export const apiSaveItem = async (oldItem: Item, newItem: Item) => {
+    let data = new FormData();
+    data.set('old', JSON.stringify(oldItem));
+    data.set('new', JSON.stringify(newItem));
+  
+    let request = new XMLHttpRequest();
+    request.open("POST", api+'/api/item', true);
+    request.send(data);
+};
