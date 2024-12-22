@@ -8,19 +8,19 @@ export interface Item {
 };
 
 export interface Conf {
+    Host: string;
+    Port: string;
     Theme: string;
     Color: string;
     NodePath: string;
 };
 
 export let appConfig:Conf = {
+    Host: "",
+    Port: "",
     Theme: "",
     Color: "",
     NodePath: ""
-};
-
-export const setAppConfig = (conf:Conf) => {
-    appConfig = conf;
 };
 
 export const getConfig = async () => {
@@ -54,5 +54,15 @@ export const apiSaveItem = async (oldItem: Item, newItem: Item) => {
   
     let request = new XMLHttpRequest();
     request.open("POST", api+'/api/item', true);
+    request.send(data);
+};
+
+export const apiSaveConf = async (conf: Conf) => {
+    let data = new FormData();
+    
+    data.set('conf', JSON.stringify(conf));
+  
+    let request = new XMLHttpRequest();
+    request.open("POST", api+'/api/conf', true);
     request.send(data);
 };

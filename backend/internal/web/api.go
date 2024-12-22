@@ -8,6 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/aceberg/QuickStart/internal/check"
+	"github.com/aceberg/QuickStart/internal/conf"
 	"github.com/aceberg/QuickStart/internal/models"
 	"github.com/aceberg/QuickStart/internal/service"
 	"github.com/aceberg/QuickStart/internal/yaml"
@@ -79,13 +80,27 @@ func apiSaveItem(c *gin.Context) {
 }
 
 func apiSaveConf(c *gin.Context) {
-	var conf models.Conf
+	var config models.Conf
 
 	str := c.PostForm("conf")
-	err := json.Unmarshal([]byte(str), &conf)
+	err := json.Unmarshal([]byte(str), &config)
 	check.IfError(err)
 
-	log.Println("CONF", conf)
+	log.Println("CONF", config)
+	appConfig.Host = config.Host
+	appConfig.Port = config.Port
+	appConfig.Theme = config.Theme
+	appConfig.Color = config.Color
+	appConfig.NodePath = config.NodePath
+
+	conf.Write(appConfig)
 
 	c.IndentedJSON(http.StatusOK, true)
+}
+
+func apiGetTypes(c *gin.Context) {
+
+	types := yaml.ReadTypes(appConfig.TypePath)
+
+	c.IndentedJSON(http.StatusOK, types)
 }

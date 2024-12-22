@@ -21,6 +21,16 @@ function Body() {
     <>
     <div className="container-lg mt-2">
       <table className="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Group</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Action</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
         <tbody>
         {items.map((item, i) => (
           <tr key={i}>

@@ -1,3 +1,5 @@
+import ReactDOM from "react-dom";
+
 interface BootstrapModalProps {
   isOpen: boolean; // Controls modal visibility
   title?: string; // Optional title
@@ -14,7 +16,7 @@ const BootstrapModal: React.FC<BootstrapModalProps> = ({
   body,
   onClose
 }) => {
-  return (
+  return ReactDOM.createPortal(
     <div 
       className={`modal ${size} fade ${isOpen ? "show d-block" : ""}`} 
       tabIndex={-1} 
@@ -43,7 +45,8 @@ const BootstrapModal: React.FC<BootstrapModalProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
