@@ -23,15 +23,20 @@ function Header() {
     setUpdHead(false);
   }, [updHead]);
 
+  const handleReload = () => {
+    window.location.reload();
+  };
+
   return (
     <>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"></link> {/* icons */}
       <link href={path} rel="stylesheet"></link> {/* bootstrap+themes */}
       <div className="container-lg">
         <div className='d-flex justify-content-between mt-2'>
-          <h3 className="mt-2">QuickStart</h3>
+          <h3 className="shade-hover" onClick={handleReload}>QuickStart</h3>
           <div className='d-flex justify-content-between'>
             <TypesDropdown></TypesDropdown>
+            <span className="p-2"></span>
             <ConfigDropdown headUpd={setUpdHead}></ConfigDropdown>
           </div>
         </div>

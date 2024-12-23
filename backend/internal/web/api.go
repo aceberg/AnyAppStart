@@ -64,13 +64,18 @@ func apiSaveItem(c *gin.Context) {
 	err = json.Unmarshal([]byte(str), &newItem)
 	check.IfError(err)
 
-	for _, item := range yaml.Read(appConfig.ItemPath) {
-		if item == oldItem {
-			if newItem.Name != "" {
-				items = append(items, newItem)
+	if oldItem.Name == "" && newItem.Name != "" {
+		items = yaml.Read(appConfig.ItemPath)
+		items = append(items, newItem)
+	} else {
+		for _, item := range yaml.Read(appConfig.ItemPath) {
+			if item == oldItem {
+				if newItem.Name != "" {
+					items = append(items, newItem)
+				}
+			} else {
+				items = append(items, item)
 			}
-		} else {
-			items = append(items, item)
 		}
 	}
 

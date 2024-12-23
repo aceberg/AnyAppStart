@@ -2,7 +2,7 @@ import { useState } from "react";
 import BootstrapModal from "./Modal";
 import { apiSaveConf, appConfig, Conf } from "../functions/api";
 
-function Config(_props: any) {
+function ConfigSettings(_props: any) {
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<Conf>(appConfig);
@@ -48,11 +48,10 @@ function Config(_props: any) {
 
   return (
     <>
-      {/* <i className="bi bi-gear shade-hover fs-3" title="Settings" onClick={handleEdit}></i> */}
-      <a href="#" className="dropdown-item" onClick={handleEdit}>Config</a>
+      <a href="#" className="dropdown-item" onClick={handleEdit}>Settings</a>
       <BootstrapModal
         isOpen={isModalOpen}
-        title="Config"
+        title="Settings"
         size=""
         body={
           <form>
@@ -81,4 +80,4 @@ function Config(_props: any) {
   )
 }
 
-export default Config
+export default ConfigSettings

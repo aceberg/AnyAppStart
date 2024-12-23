@@ -37,7 +37,7 @@ function EditItem(_props: any) {
 
   return (
     <>
-      <i className="bi bi-three-dots-vertical shade-hover" onClick={handleEdit} title="Edit"></i>
+      <span onClick={handleEdit}>{_props.btnContent}</span>
       <BootstrapModal
         isOpen={isModalOpen}
         title="Edit Item"

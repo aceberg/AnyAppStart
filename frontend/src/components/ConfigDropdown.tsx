@@ -1,4 +1,6 @@
-import Config from "./Config";
+import ConfigAbout from "./ConfigAbout";
+import ConfigItemAdd from "./ConfigItemAdd";
+import ConfigSettings from "./ConfigSettings";
 
 const ConfigDropdown = (_props: any) => {
   return (
@@ -7,10 +9,10 @@ const ConfigDropdown = (_props: any) => {
     <i className="bi bi-gear shade-hover fs-3 dropdown-toggle" data-bs-toggle="dropdown" title="Settings"></i> 
     
     <ul className="dropdown-menu">
-      <li><a href="#" className="dropdown-item" data-bs-toggle="modal" data-bs-target="#themeModal">Add Item</a></li>
-      <li><Config headUpd={_props.headUpd}></Config></li>
+      <li><ConfigItemAdd></ConfigItemAdd></li>
+      <li><ConfigSettings headUpd={_props.headUpd}></ConfigSettings></li>
       <li><hr className="dropdown-divider"></hr></li>
-      <li><a href="#" className="dropdown-item" data-bs-toggle="modal" data-bs-target="#aboutModal">About</a></li>
+      <li><ConfigAbout></ConfigAbout></li>
     </ul>
   </div>
   );

@@ -39,6 +39,13 @@ export const getItems = async () => {
     return items;
 };
 
+export const getTypes = async () => {
+    const url = api+'/api/types';
+    const types = await (await fetch(url)).json();
+  
+    return types;
+};
+
 export const apiExec = async (item: Item) => {
 
     const url = api+'/api/exec?name='+item.Name+'&type='+item.Type+'&exec='+item.Exec;

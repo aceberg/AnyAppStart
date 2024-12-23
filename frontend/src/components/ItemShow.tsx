@@ -32,7 +32,9 @@ function ItemShow(_props: any) {
         <Logs item={_props.item}></Logs>
       </td>
       <td>
-        <EditItem item={_props.item} bodyUpd={_props.bodyUpd}></EditItem>
+        <EditItem item={_props.item} bodyUpd={_props.bodyUpd} 
+          btnContent={<i className="bi bi-three-dots-vertical shade-hover" title="Edit"></i>}>  
+        </EditItem>
       </td>
     </>
   )
