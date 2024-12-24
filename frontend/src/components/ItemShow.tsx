@@ -29,6 +29,8 @@ function ItemShow(_props: any) {
         <i className="bi bi-play shade-hover" onClick={() => handleExec("Start")} title="Start"></i>
         <i className="bi bi-arrow-clockwise shade-hover" onClick={() => handleExec("Restart")} title="Restart"></i>
         <i className="bi bi-stop shade-hover" onClick={() => handleExec("Stop")} title="Stop"></i>
+      </td>
+      <td>
         <Logs item={_props.item}></Logs>
       </td>
       <td>

@@ -28,6 +28,7 @@ function Body() {
             <th>Name</th>
             <th>Type</th>
             <th>Action</th>
+            <th>Logs</th>
             <th>Edit</th>
           </tr>
         </thead>

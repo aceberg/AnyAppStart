@@ -1,3 +1,4 @@
+import TypesList from "./TypesList";
 
 
 const TypesDropdown = () => {
@@ -8,7 +9,7 @@ const TypesDropdown = () => {
     
     <ul className="dropdown-menu">
       <li><a href="#" className="dropdown-item" data-bs-toggle="modal" data-bs-target="#themeModal">Add Type</a></li>
-      <li><a href="#" className="dropdown-item" data-bs-toggle="modal" data-bs-target="#aboutModal">Types</a></li>
+      <li><TypesList></TypesList></li>
     </ul>
   </div>
   );

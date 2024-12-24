@@ -15,6 +15,15 @@ export interface Conf {
     NodePath: string;
 };
 
+export interface TypeStruct {
+    Name: string;
+    Start: string;
+    Stop: string;
+    Restart: string;
+    Logs: string;
+    State: string;
+};
+
 export let appConfig:Conf = {
     Host: "",
     Port: "",

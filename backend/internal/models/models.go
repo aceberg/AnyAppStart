@@ -25,3 +25,13 @@ type Item struct {
 type OneType struct {
 	ExecMap map[string]string `yaml:"exec"`
 }
+
+// TypeStruct - one type struct
+type TypeStruct struct {
+	Name    string
+	Start   string
+	Restart string
+	Stop    string
+	Logs    string
+	State   string
+}

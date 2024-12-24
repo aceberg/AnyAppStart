@@ -106,6 +106,7 @@ func apiSaveConf(c *gin.Context) {
 func apiGetTypes(c *gin.Context) {
 
 	types := yaml.ReadTypes(appConfig.TypePath)
+	tStruct := typesToStruct(types)
 
-	c.IndentedJSON(http.StatusOK, types)
+	c.IndentedJSON(http.StatusOK, tStruct)
 }
