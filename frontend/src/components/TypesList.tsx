@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import BootstrapModal from "./Modal";
 import { getTypes, TypeStruct } from "../functions/api";
+import TypeEdit from "./TypeEdit";
 
 function TypesList() {
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [types, setTypes] = useState<TypeStruct[]>([]);
 
-  const handleEdit = () => {
+  const handleOpen = () => {
     setModalOpen(true);
+  }
+
+  const handleDelete = (type: TypeStruct) => {
+    console.log("DEL TYPE", type)
   }
 
   const handleCloseModal = () => setModalOpen(false);
@@ -24,7 +29,7 @@ function TypesList() {
 
   return (
     <>
-      <a href="#" className="dropdown-item" onClick={handleEdit}>Types</a>
+      <a href="#" className="dropdown-item" onClick={handleOpen}>Types</a>
       <BootstrapModal
         isOpen={isModalOpen}
         title="Types"
@@ -33,8 +38,10 @@ function TypesList() {
           <>
           {types.map((t, i) => (
             <div key={i} className='d-flex justify-content-between shade-hover rounded-0'>
-              <span className="p-2">{t.Name}</span>
-              <i className="bi bi-x-lg shade-hover"></i>
+              <TypeEdit item={t}
+                btnContent={<span className="shade-hover p-2" title="Edit">{t.Name}</span>}>
+              </TypeEdit>
+              <i className="bi bi-x-lg shade-hover" onClick={() => handleDelete(t)} title="Delete"></i>
             </div>
           ))}
           </>

@@ -73,6 +73,16 @@ export const apiSaveItem = async (oldItem: Item, newItem: Item) => {
     request.send(data);
 };
 
+export const apiSaveType = async (oldType: TypeStruct, newType: TypeStruct) => {
+    let data = new FormData();
+    data.set('old', JSON.stringify(oldType));
+    data.set('new', JSON.stringify(newType));
+  
+    let request = new XMLHttpRequest();
+    request.open("POST", api+'/api/type', true);
+    request.send(data);
+};
+
 export const apiSaveConf = async (conf: Conf) => {
     let data = new FormData();
     

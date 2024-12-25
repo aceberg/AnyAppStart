@@ -3,7 +3,7 @@ import { Item } from "../functions/api";
 import EditItem from "./EditItem"
 
 
-function ConfigItemAdd(_props: any) {
+function ConfigItemAdd() {
 
   const item:Item = {
     Group: "",

@@ -110,3 +110,20 @@ func apiGetTypes(c *gin.Context) {
 
 	c.IndentedJSON(http.StatusOK, tStruct)
 }
+
+func apiSaveType(c *gin.Context) {
+	var oldType, newType models.TypeStruct
+
+	str := c.PostForm("old")
+	err := json.Unmarshal([]byte(str), &oldType)
+	check.IfError(err)
+
+	str = c.PostForm("new")
+	err = json.Unmarshal([]byte(str), &newType)
+	check.IfError(err)
+
+	log.Println("OLD TYPE", oldType)
+	log.Println("NEW TYPE", newType)
+
+	c.IndentedJSON(http.StatusOK, true)
+}

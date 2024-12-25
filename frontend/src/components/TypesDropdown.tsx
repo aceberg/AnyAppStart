@@ -1,3 +1,4 @@
+import TypeAdd from "./TypeAdd";
 import TypesList from "./TypesList";
 
 
@@ -8,7 +9,7 @@ const TypesDropdown = () => {
     <i className="bi bi-inboxes shade-hover fs-3 dropdown-toggle" data-bs-toggle="dropdown" title="Settings"></i> 
     
     <ul className="dropdown-menu">
-      <li><a href="#" className="dropdown-item" data-bs-toggle="modal" data-bs-target="#themeModal">Add Type</a></li>
+      <li><TypeAdd></TypeAdd></li>
       <li><TypesList></TypesList></li>
     </ul>
   </div>
