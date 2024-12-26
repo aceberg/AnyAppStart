@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BootstrapModal from "./Modal";
 import { apiSaveType, TypeStruct } from "../functions/api";
 
@@ -12,10 +12,6 @@ function TypeEdit(_props: any) {
     Logs: _props.item.Logs,
     State: _props.item.State,
   };  
-
-  useEffect(() => {
-    console.log("ADD/EDIT TYPE:", newType);
-  },[]);
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<TypeStruct>(newType);

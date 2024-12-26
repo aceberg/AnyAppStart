@@ -38,9 +38,11 @@ function TypesList() {
           <>
           {types.map((t, i) => (
             <div key={i} className='d-flex justify-content-between shade-hover rounded-0'>
-              <TypeEdit item={t}
-                btnContent={<span className="shade-hover p-2" title="Edit">{t.Name}</span>}>
-              </TypeEdit>
+              <div className="mt-2">
+                <TypeEdit item={t}
+                  btnContent={<span className="shade-hover p-2" title="Edit">{t.Name}</span>}>
+                </TypeEdit>
+              </div>
               <i className="bi bi-x-lg shade-hover" onClick={() => handleDelete(t)} title="Delete"></i>
             </div>
           ))}

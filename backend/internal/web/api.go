@@ -122,8 +122,25 @@ func apiSaveType(c *gin.Context) {
 	err = json.Unmarshal([]byte(str), &newType)
 	check.IfError(err)
 
-	log.Println("OLD TYPE", oldType)
-	log.Println("NEW TYPE", newType)
+	types := yaml.ReadTypes(appConfig.TypePath)
+
+	if oldType.Name == "" && newType.Name != "" { // If new type
+		types[newType.Name] = toOneType(newType)
+	} else {
+		for key := range types {
+			if key == oldType.Name { // Found type to edit
+				if newType.Name != "" { // Edit
+					delete(types, oldType.Name)
+					types[newType.Name] = toOneType(newType)
+				} else { // Delete
+					delete(types, key)
+				}
+			}
+		}
+	}
+
+	log.Println("TYPES:", types)
+	yaml.WriteTypes(appConfig.TypePath, types)
 
 	c.IndentedJSON(http.StatusOK, true)
 }

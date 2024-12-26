@@ -22,3 +22,17 @@ func typesToStruct(types map[string]models.OneType) (typeStructArray []models.Ty
 
 	return typeStructArray
 }
+
+func toOneType(tStruct models.TypeStruct) (oneType models.OneType) {
+
+	tmpMap := make(map[string]string)
+
+	tmpMap["Start"] = tStruct.Start
+	tmpMap["Stop"] = tStruct.Stop
+	tmpMap["Restart"] = tStruct.Restart
+	tmpMap["Logs"] = tStruct.Logs
+	tmpMap["State"] = tStruct.State
+
+	oneType.ExecMap = tmpMap
+	return oneType
+}

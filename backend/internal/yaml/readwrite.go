@@ -47,3 +47,15 @@ func ReadTypes(path string) map[string]models.OneType {
 
 	return items
 }
+
+// WriteTypes - write struct to  .yaml file
+func WriteTypes(path string, items map[string]models.OneType) {
+
+	yamlData, err := yaml.Marshal(&items)
+	check.IfError(err)
+
+	err = os.WriteFile(path, yamlData, 0644)
+	check.IfError(err)
+
+	log.Println("INFO: writing new types to", path)
+}
