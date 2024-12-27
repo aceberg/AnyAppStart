@@ -5,7 +5,8 @@ import TypesDropdown from "./TypesDropdown";
 
 function Header() {
 
-  const [path, setPath] = useState("");
+  const [themePath, setThemePath] = useState('');
+  const [iconsPath, setIconsPath] = useState('');
   const [updHead, setUpdHead] = useState<boolean>(false);
 
   useEffect(() => {
@@ -14,7 +15,13 @@ function Header() {
     
       await getConfig();
 
-      setPath("https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/"+appConfig.Theme+"/bootstrap.min.css");
+      if (appConfig.NodePath == '') {
+        setThemePath("https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/"+appConfig.Theme+"/bootstrap.min.css");
+        setIconsPath("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
+      } else {
+        setThemePath(appConfig.NodePath+"/node_modules/bootswatch/dist/"+appConfig.Theme+"/bootstrap.min.css");
+        setIconsPath(appConfig.NodePath+"/node_modules/bootstrap-icons/font/bootstrap-icons.css");
+      }
 
       document.documentElement.setAttribute("data-bs-theme", appConfig.Color);
     };
@@ -29,8 +36,8 @@ function Header() {
 
   return (
     <>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"></link> {/* icons */}
-      <link href={path} rel="stylesheet"></link> {/* bootstrap+themes */}
+      <link rel="stylesheet" href={iconsPath}></link> {/* icons */}
+      <link rel="stylesheet" href={themePath}></link> {/* theme */}
       <div className="container-lg">
         <div className='d-flex justify-content-between mt-2'>
           <h3 className="shade-hover" onClick={handleReload}>QuickStart</h3>

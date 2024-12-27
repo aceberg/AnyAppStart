@@ -1,19 +1,32 @@
 import { useEffect, useState } from "react";
 import BootstrapModal from "./Modal";
-import { getTypes, TypeStruct } from "../functions/api";
+import { apiSaveType, getTypes, TypeStruct } from "../functions/api";
 import TypeEdit from "./TypeEdit";
 
 function TypesList() {
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [types, setTypes] = useState<TypeStruct[]>([]);
+  const [updTypes, setUpdTypes] = useState<boolean>(false);
 
   const handleOpen = () => {
     setModalOpen(true);
   }
 
-  const handleDelete = (type: TypeStruct) => {
-    console.log("DEL TYPE", type)
+  const handleDelete = async (type: TypeStruct) => {
+    console.log("DEL TYPE", type);
+
+    let newType:TypeStruct = {
+      Name: "",
+      Start: "",
+      Stop: "",
+      Restart: "",
+      Logs: "",
+      State: ""
+    };
+    
+    await apiSaveType(type, newType);
+    setUpdTypes(true);
   }
 
   const handleCloseModal = () => setModalOpen(false);
@@ -25,7 +38,8 @@ function TypesList() {
     };
     
     fetchData();
-  }, []);
+    setUpdTypes(false);
+  }, [updTypes]);
 
   return (
     <>
@@ -37,9 +51,9 @@ function TypesList() {
         body={
           <>
           {types.map((t, i) => (
-            <div key={i} className='d-flex justify-content-between shade-hover rounded-0'>
+            <div key={i} className='d-flex justify-content-between'>
               <div className="mt-2">
-                <TypeEdit item={t}
+                <TypeEdit item={t} updTypes={setUpdTypes}
                   btnContent={<span className="shade-hover p-2" title="Edit">{t.Name}</span>}>
                 </TypeEdit>
               </div>
