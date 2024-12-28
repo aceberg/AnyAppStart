@@ -6,7 +6,7 @@ const ConfigDropdown = (_props: any) => {
   return (
     <div className="dropdown">
         
-    <i className="bi bi-gear shade-hover fs-3 dropdown-toggle" data-bs-toggle="dropdown" title="Settings"></i> 
+    <i className="bi bi-gear shade-hover fs-3" data-bs-toggle="dropdown" title="Settings"></i> 
     
     <ul className="dropdown-menu">
       <li><ConfigItemAdd></ConfigItemAdd></li>

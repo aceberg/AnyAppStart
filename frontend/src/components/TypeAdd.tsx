@@ -1,21 +1,20 @@
+import { TypeStruct } from "../functions/api"
 import TypeEdit from "./TypeEdit"
-import { TypeStruct } from "../functions/api";
 
+function TypeAdd(_props:any) {
 
-function TypeAdd() {
-
-  const newType:TypeStruct = {
+  const emptyType:TypeStruct = {
     Name: "",
     Start: "",
     Stop: "",
     Restart: "",
     Logs: "",
     State: "",
-  };
+  }
 
   return (
     <>
-      <TypeEdit item={newType}
+      <TypeEdit typeItem={emptyType} setUpdTypes={_props.setUpdTypes}
           btnContent={<a href="#" className="dropdown-item">Add Type</a>}>
       </TypeEdit>
     </>

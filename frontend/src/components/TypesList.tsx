@@ -1,35 +1,10 @@
 import { useEffect, useState } from "react";
-import BootstrapModal from "./Modal";
-import { apiSaveType, getTypes, TypeStruct } from "../functions/api";
+import { getTypes, TypeStruct } from "../functions/api";
 import TypeEdit from "./TypeEdit";
 
-function TypesList() {
+function TypesList(_props:any) {
 
-  const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [types, setTypes] = useState<TypeStruct[]>([]);
-  const [updTypes, setUpdTypes] = useState<boolean>(false);
-
-  const handleOpen = () => {
-    setModalOpen(true);
-  }
-
-  const handleDelete = async (type: TypeStruct) => {
-    console.log("DEL TYPE", type);
-
-    let newType:TypeStruct = {
-      Name: "",
-      Start: "",
-      Stop: "",
-      Restart: "",
-      Logs: "",
-      State: ""
-    };
-    
-    await apiSaveType(type, newType);
-    setUpdTypes(true);
-  }
-
-  const handleCloseModal = () => setModalOpen(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,32 +13,21 @@ function TypesList() {
     };
     
     fetchData();
-    setUpdTypes(false);
-  }, [updTypes]);
+    _props.setUpdTypes(false);
+    return function cleanup() {
+      setTypes([]);
+    }
+  }, [_props.updTypes]);
 
   return (
     <>
-      <a href="#" className="dropdown-item" onClick={handleOpen}>Types</a>
-      <BootstrapModal
-        isOpen={isModalOpen}
-        title="Types"
-        size=""
-        body={
-          <>
-          {types.map((t, i) => (
-            <div key={i} className='d-flex justify-content-between'>
-              <div className="mt-2">
-                <TypeEdit item={t} updTypes={setUpdTypes}
-                  btnContent={<span className="shade-hover p-2" title="Edit">{t.Name}</span>}>
-                </TypeEdit>
-              </div>
-              <i className="bi bi-x-lg shade-hover" onClick={() => handleDelete(t)} title="Delete"></i>
-            </div>
-          ))}
-          </>
-        }
-        onClose={handleCloseModal}
-      />
+      {types.map((t, i) => (
+        <div key={i}>
+          <TypeEdit typeItem={t} setUpdTypes={_props.setUpdTypes}
+            btnContent={<li><a href="#" className="dropdown-item">{t.Name}</a></li>}>
+          </TypeEdit>              
+        </div>
+      ))}
     </>
   )
 }

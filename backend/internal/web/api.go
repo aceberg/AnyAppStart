@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"sort"
 
 	"github.com/gin-gonic/gin"
 
@@ -107,6 +108,10 @@ func apiGetTypes(c *gin.Context) {
 
 	types := yaml.ReadTypes(appConfig.TypePath)
 	tStruct := typesToStruct(types)
+
+	sort.Slice(tStruct, func(i, j int) bool {
+		return tStruct[i].Name < tStruct[j].Name
+	})
 
 	c.IndentedJSON(http.StatusOK, tStruct)
 }
