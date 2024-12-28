@@ -8,7 +8,8 @@ function EditItem(_props: any) {
     Group: _props.item.Group,
     Name: _props.item.Name,
     Type: _props.item.Type,
-    Exec: ""
+    Exec: "",
+    State: ""
   };
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -30,7 +31,7 @@ function EditItem(_props: any) {
     if (JSON.stringify(formData) !== JSON.stringify(item)) {
       await apiSaveItem(item, formData);
       console.log("SAVE:", formData);
-      _props.bodyUpd(true);
+      _props.setUpdBody(true);
     }
     setModalOpen(false);
   }

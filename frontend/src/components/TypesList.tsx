@@ -21,7 +21,7 @@ function TypesList(_props:any) {
 
   return (
     <>
-      {types.map((t, i) => (
+      {types?.map((t, i) => (
         <div key={i}>
           <TypeEdit typeItem={t} setUpdTypes={_props.setUpdTypes}
             btnContent={<li><a href="#" className="dropdown-item">{t.Name}</a></li>}>

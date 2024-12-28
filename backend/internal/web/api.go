@@ -49,6 +49,7 @@ func apiExec(c *gin.Context) {
 func apiGetItems(c *gin.Context) {
 
 	items := yaml.Read(appConfig.ItemPath)
+	items = getAllStates(items)
 
 	c.IndentedJSON(http.StatusOK, items)
 }

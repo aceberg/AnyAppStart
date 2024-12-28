@@ -15,7 +15,11 @@ function TypeAdd(_props:any) {
   return (
     <>
       <TypeEdit typeItem={emptyType} setUpdTypes={_props.setUpdTypes}
-          btnContent={<a href="#" className="dropdown-item">Add Type</a>}>
+        btnContent={
+          <a href="#" className="dropdown-item">
+            Add Type
+          </a>
+        }>
       </TypeEdit>
     </>
   )

@@ -2,6 +2,8 @@ package web
 
 import (
 	"github.com/aceberg/QuickStart/internal/models"
+	"github.com/aceberg/QuickStart/internal/service"
+	"github.com/aceberg/QuickStart/internal/yaml"
 )
 
 func typesToStruct(types map[string]models.OneType) (typeStructArray []models.TypeStruct) {
@@ -35,4 +37,22 @@ func toOneType(tStruct models.TypeStruct) (oneType models.OneType) {
 
 	oneType.ExecMap = tmpMap
 	return oneType
+}
+
+func getAllStates(items []models.Item) (newItems []models.Item) {
+	var ok bool
+
+	types := yaml.ReadTypes(appConfig.TypePath)
+
+	for _, item := range items {
+
+		item.Exec = "State"
+		ok, _ = service.Exec(item, types)
+		if ok {
+			item.State = "on"
+		}
+		newItems = append(newItems, item)
+	}
+
+	return newItems
 }

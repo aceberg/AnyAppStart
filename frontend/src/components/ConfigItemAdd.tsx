@@ -9,6 +9,7 @@ function ConfigItemAdd() {
     Group: "",
     Name: "",
     Type: "",
+    State: "",
     Exec: ""
   };
 

@@ -1,12 +1,11 @@
-import { useState } from "react";
 import { apiExec } from "../functions/api";
-import State from "./State";
 import Logs from "./Logs";
 import EditItem from "./EditItem";
 
 function ItemShow(_props: any) {
 
-  const [upd, setUpd] = useState(1);
+  const stateOn = "bi bi-circle-fill text-success";
+  const stateOff = "bi bi-circle-fill text-danger";
 
   const handleExec = async (exec: string) => {
     let item = _props.item;
@@ -15,13 +14,13 @@ function ItemShow(_props: any) {
     console.log("EXEC:", item);
     await apiExec(item);
     setTimeout(() => {
-      setUpd(-upd);
+      _props.setUpdBody(true);
     }, 1000);
   }
 
   return (
     <>
-      <td><State item={_props.item} upd={upd}></State></td>
+      <td><i className={_props.item.State == "on" ? stateOn : stateOff }></i></td>
       <td>{_props.item.Group}</td>
       <td>{_props.item.Name}</td>
       <td>{_props.item.Type}</td>
@@ -34,7 +33,7 @@ function ItemShow(_props: any) {
         <Logs item={_props.item}></Logs>
       </td>
       <td>
-        <EditItem item={_props.item} bodyUpd={_props.bodyUpd} 
+        <EditItem item={_props.item} setUpdBody={_props.setUpdBody} 
           btnContent={<i className="bi bi-three-dots-vertical shade-hover" title="Edit"></i>}>  
         </EditItem>
       </td>

@@ -17,7 +17,7 @@ function TypeEdit(_props: any) {
     }));
   };
 
-  const handleEdit = async () => {
+  const handleEdit = () => {
     setModalOpen(true);
   }
 
@@ -26,8 +26,8 @@ function TypeEdit(_props: any) {
       console.log("SAVE1:", oldType);
       console.log("SAVE2:", formData);
       await apiSaveType(oldType, formData);
+      _props.setUpdTypes(true);
     }
-    _props.setUpdTypes(true);
     setModalOpen(false);
   }
 

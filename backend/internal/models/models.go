@@ -19,6 +19,7 @@ type Item struct {
 	Name  string `yaml:"name"`
 	Type  string `yaml:"type"`
 	Exec  string `yaml:"-"`
+	State string `yaml:"-"`
 }
 
 // OneType - one type and its execs
