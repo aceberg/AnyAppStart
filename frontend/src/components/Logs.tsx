@@ -21,7 +21,7 @@ function Logs(_props: any) {
 
   return (
     <>
-      <i className="bi bi-list-ul shade-hover" onClick={handleLogs} title="Logs"></i>
+      <i className="bi bi-list-ul shade-hover fs-5" onClick={handleLogs} title="Logs"></i>
       <BootstrapModal
         isOpen={isModalOpen}
         title="Logs"

@@ -33,6 +33,11 @@ export let appConfig:Conf = {
     NodePath: ""
 };
 
+export interface ToFilter {
+    Field: keyof Item;
+    Option: string;
+};
+
 export const getConfig = async () => {
     const url = api+'/api/conf';
     const conf = await (await fetch(url)).json();

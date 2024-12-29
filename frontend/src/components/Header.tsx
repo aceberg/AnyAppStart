@@ -43,7 +43,7 @@ function Header() {
           <h3 className="shade-hover rounded-3" onClick={handleReload}>QuickStart</h3>
           <div className='d-flex justify-content-between'>
             <TypesDropdown></TypesDropdown>
-            <span className="p-2"></span>
+            <span className="p-3"></span>
             <ConfigDropdown headUpd={setUpdHead}></ConfigDropdown>
           </div>
         </div>

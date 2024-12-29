@@ -25,16 +25,16 @@ function ItemShow(_props: any) {
       <td>{_props.item.Name}</td>
       <td>{_props.item.Type}</td>
       <td>
-        <i className="bi bi-play shade-hover" onClick={() => handleExec("Start")} title="Start"></i>
-        <i className="bi bi-arrow-clockwise shade-hover" onClick={() => handleExec("Restart")} title="Restart"></i>
-        <i className="bi bi-stop shade-hover" onClick={() => handleExec("Stop")} title="Stop"></i>
+        <i className="bi bi-play shade-hover me-1 fs-5" onClick={() => handleExec("Start")} title="Start"></i>
+        <i className="bi bi-arrow-clockwise shade-hover me-1 fs-5" onClick={() => handleExec("Restart")} title="Restart"></i>
+        <i className="bi bi-stop shade-hover fs-5" onClick={() => handleExec("Stop")} title="Stop"></i>
       </td>
       <td>
         <Logs item={_props.item}></Logs>
       </td>
       <td>
         <EditItem item={_props.item} setUpdBody={_props.setUpdBody} 
-          btnContent={<i className="bi bi-three-dots-vertical shade-hover" title="Edit"></i>}>  
+          btnContent={<i className="bi bi-three-dots-vertical shade-hover fs-5" title="Edit"></i>}>  
         </EditItem>
       </td>
     </>

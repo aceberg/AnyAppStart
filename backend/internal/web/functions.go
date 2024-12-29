@@ -50,6 +50,8 @@ func getAllStates(items []models.Item) (newItems []models.Item) {
 		ok, _ = service.Exec(item, types)
 		if ok {
 			item.State = "on"
+		} else {
+			item.State = "off"
 		}
 		newItems = append(newItems, item)
 	}

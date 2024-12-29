@@ -1,10 +1,10 @@
 import { Item } from "./api";
 
-export const sortItems = (items:Item[], field:keyof Item, asc:boolean) => {
-  
+export const sortItems = (items:Item[], field:keyof Item, asc:boolean, trig:boolean) => {
+  trig = !trig; // trigger to run sort
   items.sort((a, b) => byField(a, b, field, asc));
   
-return items;
+  return items;
 };
 
 function byField(a:Item, b:Item, fieldName:keyof Item, down:boolean){
@@ -13,4 +13,11 @@ function byField(a:Item, b:Item, fieldName:keyof Item, down:boolean){
   } else {
       return !down ? 1 : -1;
   }
-}
+};
+
+export const filterItems = (items:Item[], field:keyof Item, option: string) => {
+  
+  items = items.filter((item) => item[field] == option);
+  
+  return items;
+};
