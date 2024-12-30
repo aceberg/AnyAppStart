@@ -22,12 +22,20 @@ function ConfigSettings(_props: any) {
     setModalOpen(true);
   }
 
-  const handleCloseModal = async () => {
+  const saveChanges = async () => {
     if (JSON.stringify(formData) !== JSON.stringify(appConfig)) {
       await apiSaveConf(formData);
       console.log("SAVE:", formData);
       _props.headUpd(true);
     }
+  }
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  }
+
+  const handleSave = () => {
+    saveChanges();
     setModalOpen(false);
   }
 
@@ -72,6 +80,10 @@ function ConfigSettings(_props: any) {
             </select>
             <label htmlFor="tid" className="form-label text-primary">NodePath</label>
             <input className="form-control mb-3" defaultValue={appConfig.NodePath} id="tid" name="NodePath" onChange={handleChange}></input>
+            <div className='d-flex justify-content-between'>
+              <span></span>
+              <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>
+            </div>
           </form>
         }
         onClose={handleCloseModal}

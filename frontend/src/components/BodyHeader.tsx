@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Item } from "../functions/api";
+import BodyAddItem from "./BodyAddItem";
 
 function BodyHeader(_props: any) {
 
@@ -50,7 +51,7 @@ function BodyHeader(_props: any) {
           </select>
         
       </div>
-      <button className="btn btn-outline-primary">Add Item</button>
+      <BodyAddItem setUpdBody={_props.setUpdBody}></BodyAddItem>
     </div>
   )
 }

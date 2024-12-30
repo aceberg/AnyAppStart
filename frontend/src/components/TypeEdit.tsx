@@ -21,13 +21,29 @@ function TypeEdit(_props: any) {
     setModalOpen(true);
   }
 
-  const handleCloseModal = async () => {
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  }
+
+  const saveChanges = async () => {
     if (JSON.stringify(formData) !== JSON.stringify(oldType)) {
       console.log("SAVE1:", oldType);
       console.log("SAVE2:", formData);
       await apiSaveType(oldType, formData);
-      _props.setUpdTypes(true);
+      _props.setUpdTypes(true); 
     }
+  }
+
+  const handleSave = () => {
+    saveChanges();
+    setModalOpen(false);
+  }
+
+  const handleDel = () => {
+    let delData = formData;
+    delData.Name = "";
+    setFormData(delData);
+    saveChanges();
     setModalOpen(false);
   }
 
@@ -40,7 +56,7 @@ function TypeEdit(_props: any) {
         size="modal-lg"
         body={
           <form>
-            <label htmlFor="nid" className="form-label text-primary">Name (leave blank to delete Type)</label>
+            <label htmlFor="nid" className="form-label text-primary">Name</label>
             <input className="form-control mb-3" defaultValue={oldType.Name} id="nid" name="Name" onChange={handleChange}></input>
             <label htmlFor="gid" className="form-label text-primary">Start</label>
             <input className="form-control mb-3" defaultValue={oldType.Start} id="gid" name="Start" onChange={handleChange}></input>
@@ -52,6 +68,10 @@ function TypeEdit(_props: any) {
             <input className="form-control mb-3" defaultValue={oldType.Logs} id="lid" name="Logs" onChange={handleChange}></input>
             <label htmlFor="tid" className="form-label text-primary">State</label>
             <input className="form-control mb-3" defaultValue={oldType.State} id="tid" name="State" onChange={handleChange}></input>
+            <div className='d-flex justify-content-between'>
+              <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>
+              <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>
+            </div>
           </form>
         }
         onClose={handleCloseModal}
