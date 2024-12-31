@@ -80,6 +80,7 @@ function ConfigSettings(_props: any) {
             </select>
             <label htmlFor="tid" className="form-label text-primary">NodePath</label>
             <input className="form-control mb-3" defaultValue={appConfig.NodePath} id="tid" name="NodePath" onChange={handleChange}></input>
+            <hr></hr>
             <div className='d-flex justify-content-between'>
               <span></span>
               <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>

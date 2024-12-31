@@ -67,6 +67,7 @@ function EditItem(_props: any) {
             <input className="form-control mb-3" defaultValue={item.Name} id="nid" name="Name" onChange={handleChange}></input>
             <label htmlFor="tid" className="form-label text-primary">Type</label>
             <input className="form-control mb-3" defaultValue={item.Type} id="tid" name="Type" onChange={handleChange}></input>
+            <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>
               <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>

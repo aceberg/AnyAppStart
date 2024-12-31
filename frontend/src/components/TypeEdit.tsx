@@ -68,6 +68,7 @@ function TypeEdit(_props: any) {
             <input className="form-control mb-3" defaultValue={oldType.Logs} id="lid" name="Logs" onChange={handleChange}></input>
             <label htmlFor="tid" className="form-label text-primary">State</label>
             <input className="form-control mb-3" defaultValue={oldType.State} id="tid" name="State" onChange={handleChange}></input>
+            <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>
               <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>

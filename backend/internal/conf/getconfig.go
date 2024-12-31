@@ -13,8 +13,8 @@ func Get(path string) models.Conf {
 
 	viper.SetDefault("HOST", "0.0.0.0")
 	viper.SetDefault("PORT", "8855")
-	viper.SetDefault("THEME", "emerald")
-	viper.SetDefault("COLOR", "light")
+	viper.SetDefault("THEME", "minty")
+	viper.SetDefault("COLOR", "dark")
 	viper.SetDefault("NODEPATH", "")
 
 	viper.SetConfigFile(path)
