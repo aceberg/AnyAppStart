@@ -6,18 +6,18 @@ import (
 	"github.com/aceberg/QuickStart/internal/yaml"
 )
 
-func typesToStruct(types map[string]models.OneType) (typeStructArray []models.TypeStruct) {
+func typesToStruct(types map[string]map[string]string) (typeStructArray []models.TypeStruct) {
 	var oneStruct models.TypeStruct
 
 	for key, value := range types {
 		oneStruct = models.TypeStruct{}
 		oneStruct.Name = key
 
-		oneStruct.Start = value.ExecMap["Start"]
-		oneStruct.Restart = value.ExecMap["Restart"]
-		oneStruct.Stop = value.ExecMap["Stop"]
-		oneStruct.Logs = value.ExecMap["Logs"]
-		oneStruct.State = value.ExecMap["State"]
+		oneStruct.Start = value["Start"]
+		oneStruct.Restart = value["Restart"]
+		oneStruct.Stop = value["Stop"]
+		oneStruct.Logs = value["Logs"]
+		oneStruct.State = value["State"]
 
 		typeStructArray = append(typeStructArray, oneStruct)
 	}
@@ -25,9 +25,9 @@ func typesToStruct(types map[string]models.OneType) (typeStructArray []models.Ty
 	return typeStructArray
 }
 
-func toOneType(tStruct models.TypeStruct) (oneType models.OneType) {
+func toOneType(tStruct models.TypeStruct) (tmpMap map[string]string) {
 
-	tmpMap := make(map[string]string)
+	tmpMap = make(map[string]string)
 
 	tmpMap["Start"] = tStruct.Start
 	tmpMap["Stop"] = tStruct.Stop
@@ -35,8 +35,7 @@ func toOneType(tStruct models.TypeStruct) (oneType models.OneType) {
 	tmpMap["Logs"] = tStruct.Logs
 	tmpMap["State"] = tStruct.State
 
-	oneType.ExecMap = tmpMap
-	return oneType
+	return tmpMap
 }
 
 func getAllStates(items []models.Item) (newItems []models.Item) {

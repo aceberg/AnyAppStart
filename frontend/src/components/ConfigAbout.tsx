@@ -19,7 +19,10 @@ function ConfigAbout() {
         title="About"
         size=""
         body={
-          <p>About</p>
+          <>
+            <p>About: <a href="https://github.com/aceberg/QuickStart">https://github.com/aceberg/QuickStart</a></p>
+            <p>Donate: <a href="https://github.com/aceberg#donate">https://github.com/aceberg#donate</a></p>
+          </>
         }
         onClose={handleCloseModal}
       />

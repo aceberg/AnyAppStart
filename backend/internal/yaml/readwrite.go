@@ -36,12 +36,12 @@ func Write(path string, items []models.Item) {
 }
 
 // ReadTypes - read .yaml file to struct
-func ReadTypes(path string) map[string]models.OneType {
+func ReadTypes(path string) map[string]map[string]string {
 
 	file, err := os.ReadFile(path)
 	check.IfError(err)
 
-	var items map[string]models.OneType
+	var items map[string]map[string]string
 	err = yaml.Unmarshal(file, &items)
 	check.IfError(err)
 
@@ -49,7 +49,7 @@ func ReadTypes(path string) map[string]models.OneType {
 }
 
 // WriteTypes - write struct to  .yaml file
-func WriteTypes(path string, items map[string]models.OneType) {
+func WriteTypes(path string, items map[string]map[string]string) {
 
 	yamlData, err := yaml.Marshal(&items)
 	check.IfError(err)

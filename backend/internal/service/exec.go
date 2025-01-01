@@ -9,12 +9,12 @@ import (
 )
 
 // Exec - run commnd
-func Exec(item models.Item, typesMap map[string]models.OneType) (bool, string) {
+func Exec(item models.Item, typesMap map[string]map[string]string) (bool, string) {
 	var str string
 
 	t, ok := typesMap[item.Type]
 	if ok {
-		str, ok = t.ExecMap[item.Exec]
+		str, ok = t[item.Exec]
 		if ok {
 
 			str = str + " " + item.Name

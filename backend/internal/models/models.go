@@ -22,11 +22,6 @@ type Item struct {
 	State string `yaml:"-"`
 }
 
-// OneType - one type and its execs
-type OneType struct {
-	ExecMap map[string]string `yaml:"exec"`
-}
-
 // TypeStruct - one type struct
 type TypeStruct struct {
 	Name    string
