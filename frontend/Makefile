@@ -1,4 +1,4 @@
-PKG_NAME=QuickStart
+PKG_NAME=AnyAppStart
 USR_NAME=aceberg
 
 build:

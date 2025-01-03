@@ -3,8 +3,8 @@ package conf
 import (
 	"github.com/spf13/viper"
 
-	"github.com/aceberg/QuickStart/internal/check"
-	"github.com/aceberg/QuickStart/internal/models"
+	"github.com/aceberg/AnyAppStart/internal/check"
+	"github.com/aceberg/AnyAppStart/internal/models"
 )
 
 // Get - read config from file or env

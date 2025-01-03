@@ -8,9 +8,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/aceberg/QuickStart/internal/check"
-	"github.com/aceberg/QuickStart/internal/conf"
-	"github.com/aceberg/QuickStart/internal/models"
+	"github.com/aceberg/AnyAppStart/internal/check"
+	"github.com/aceberg/AnyAppStart/internal/conf"
+	"github.com/aceberg/AnyAppStart/internal/models"
 )
 
 var (

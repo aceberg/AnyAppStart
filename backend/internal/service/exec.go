@@ -4,8 +4,8 @@ import (
 	"log"
 	"os/exec"
 
-	"github.com/aceberg/QuickStart/internal/check"
-	"github.com/aceberg/QuickStart/internal/models"
+	"github.com/aceberg/AnyAppStart/internal/check"
+	"github.com/aceberg/AnyAppStart/internal/models"
 )
 
 // Exec - run commnd

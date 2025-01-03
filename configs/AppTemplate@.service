@@ -1,12 +1,12 @@
 [Unit]
-Description=QuickStart
-Documentation=https://github.com/aceberg/QuickStart
+Description=AnyAppStart
+Documentation=https://github.com/aceberg/AnyAppStart
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 User=%i
-ExecStart=/usr/bin/QuickStart -c /home/%i/.config/QuickStart/config.yaml
+ExecStart=/usr/bin/AnyAppStart -c /home/%i/.config/AnyAppStart/config.yaml
 Restart=on-failure
 
 [Install]

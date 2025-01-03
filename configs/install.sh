@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PKGNAME=QuickStart
+PKGNAME=AnyAppStart
 
 cp $PKGNAME /usr/bin/
 cp $PKGNAME.service /lib/systemd/system/

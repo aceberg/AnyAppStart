@@ -6,8 +6,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/aceberg/QuickStart/internal/check"
-	"github.com/aceberg/QuickStart/internal/models"
+	"github.com/aceberg/AnyAppStart/internal/check"
+	"github.com/aceberg/AnyAppStart/internal/models"
 )
 
 // Read - read .yaml file to struct

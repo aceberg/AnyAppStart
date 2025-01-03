@@ -1,10 +1,10 @@
 version: "3"
 services:
-  QuickStart:
-    image: aceberg/QuickStart   
+  AnyAppStart:
+    image: aceberg/AnyAppStart   
     restart: unless-stopped
     volumes:
-    - ~/.dockerdata/QuickStart:/data/QuickStart
+    - ~/.dockerdata/AnyAppStart:/data/AnyAppStart
     environment:
       TZ: Asia/Novosibirsk    # required, default: ""
       HOST: "0.0.0.0"         # optional, default: 0.0.0.0

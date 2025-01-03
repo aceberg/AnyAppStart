@@ -20,7 +20,7 @@ function ConfigAbout() {
         size=""
         body={
           <>
-            <p>About: <a href="https://github.com/aceberg/QuickStart">https://github.com/aceberg/QuickStart</a></p>
+            <p>About: <a href="https://github.com/aceberg/AnyAppStart">https://github.com/aceberg/AnyAppStart</a></p>
             <p>Donate: <a href="https://github.com/aceberg#donate">https://github.com/aceberg#donate</a></p>
           </>
         }

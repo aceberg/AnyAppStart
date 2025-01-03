@@ -5,10 +5,10 @@ import (
 
 	_ "time/tzdata"
 
-	"github.com/aceberg/QuickStart/internal/web"
+	"github.com/aceberg/AnyAppStart/internal/web"
 )
 
-const dirPath = "/data/QuickStart"
+const dirPath = "/data/AnyAppStart"
 const nodePath = ""
 
 func main() {

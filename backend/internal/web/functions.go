@@ -1,9 +1,9 @@
 package web
 
 import (
-	"github.com/aceberg/QuickStart/internal/models"
-	"github.com/aceberg/QuickStart/internal/service"
-	"github.com/aceberg/QuickStart/internal/yaml"
+	"github.com/aceberg/AnyAppStart/internal/models"
+	"github.com/aceberg/AnyAppStart/internal/service"
+	"github.com/aceberg/AnyAppStart/internal/yaml"
 )
 
 func typesToStruct(types map[string]map[string]string) (typeStructArray []models.TypeStruct) {
