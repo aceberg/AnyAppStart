@@ -3,9 +3,7 @@
 </a>AnyAppStart</h1>
 <br/>
 
-[![Main-Docker](https://github.com/aceberg/AnyAppStart/actions/workflows/main-docker.yml/badge.svg)](https://github.com/aceberg/AnyAppStart/actions/workflows/main-docker.yml)
-
-Supports Docker, Systemd
+Start/Stop Docker, Systemd and other apps
 
 ![Screenshot](https://raw.githubusercontent.com/aceberg/AnyAppStart/refs/heads/main/assets/Screenshot_05.png)
 

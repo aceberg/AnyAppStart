@@ -5,7 +5,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/bin/AnyAppStart -c /etc/AnyAppStart/config.yaml
+ExecStart=/usr/bin/AnyAppStart -d /etc/AnyAppStart
 Restart=on-failure
 
 [Install]

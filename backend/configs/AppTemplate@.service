@@ -6,7 +6,7 @@ Wants=network-online.target
 
 [Service]
 User=%i
-ExecStart=/usr/bin/AnyAppStart -c /home/%i/.config/AnyAppStart/config.yaml
+ExecStart=/usr/bin/AnyAppStart -d /home/%i/.config/AnyAppStart
 Restart=on-failure
 
 [Install]

@@ -1,0 +1,12 @@
+Docker:
+    Logs: docker logs
+    Restart: docker restart
+    Start: docker start
+    State: docker ps --filter status=running | grep
+    Stop: docker stop
+Systemd:
+    Logs: sudo systemctl status
+    Restart: sudo systemctl restart
+    Start: sudo systemctl start
+    State: sudo systemctl | grep running | grep
+    Stop: sudo systemctl stop
