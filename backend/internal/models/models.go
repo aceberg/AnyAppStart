@@ -18,6 +18,7 @@ type Item struct {
 	Group string `yaml:"group"`
 	Name  string `yaml:"name"`
 	Type  string `yaml:"type"`
+	Link  string `yaml:"link,omitempty"`
 	Exec  string `yaml:"-"`
 	State string `yaml:"-"`
 }

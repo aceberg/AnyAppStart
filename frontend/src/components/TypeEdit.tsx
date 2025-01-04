@@ -4,7 +4,14 @@ import { apiSaveType, TypeStruct } from "../functions/api";
 
 function TypeEdit(_props: any) {
 
-  const oldType = _props.typeItem;
+  const oldType:TypeStruct = {
+    Name: _props.typeItem.Name,
+    Start: _props.typeItem.Start,
+    Stop: _props.typeItem.Stop,
+    Restart: _props.typeItem.Restart,
+    Logs: _props.typeItem.Logs,
+    State: _props.typeItem.State
+  };
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<TypeStruct>(oldType);
@@ -18,6 +25,7 @@ function TypeEdit(_props: any) {
   };
 
   const handleEdit = () => {
+    setFormData(oldType);
     setModalOpen(true);
   }
 
@@ -42,7 +50,6 @@ function TypeEdit(_props: any) {
   const handleDel = () => {
     let delData = formData;
     delData.Name = "";
-    setFormData(delData);
     saveChanges();
     setModalOpen(false);
   }

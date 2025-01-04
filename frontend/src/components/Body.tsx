@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react"
-import { getItems, Item, ToFilter } from "../functions/api"
+import { getItems, Item } from "../functions/api"
 import ItemShow from "./ItemShow";
-import { filterItems, sortItems } from "../functions/sortitems";
-import BodyHeader from "./BodyHeader";
+import { filterItems, getGroupsList, sortItems } from "../functions/sortitems";
+import BodyTabs from "./BodyTabs";
 
 let sortField:keyof Item = "Exec";
 let sortWay:boolean = true;
+let filterField:keyof Item = "Exec";
+let filterOption:string = "";
 
 function Body() {
 
   const [items, setItems] = useState<Item[]>([]);
+  const [grList, setGrList] = useState<string[]>([]);
   const [updBody, setUpdBody] = useState<boolean>(false);
   const [sortTrigger, setSortTrigger] = useState<boolean>(false);
-  const [filterRes, setFilterRes] = useState<ToFilter>({Field: "Exec", Option: ""});
 
   const handleSort = (sortby:keyof Item) => {
     setSortTrigger(!sortTrigger);
@@ -30,10 +32,15 @@ function Body() {
     sortField = str1 as keyof Item;
     const str = localStorage.getItem('sort_way');
     sortWay = str === "true";
+    const str2 = localStorage.getItem('filter_field');
+    filterField = str2 as keyof Item;
+    const str3 = localStorage.getItem('filter_option');
+    filterOption = str3 as string;
 
     let tmpItems:Item[] = await getItems();
-    if (filterRes.Option !== "") {
-      tmpItems = filterItems(tmpItems, filterRes.Field, filterRes.Option);
+    setGrList(getGroupsList(tmpItems));
+    if (filterOption !== "") {
+      tmpItems = filterItems(tmpItems, filterField, filterOption);
     }
 
     setItems(sortItems(tmpItems, sortField, sortWay, sortTrigger));
@@ -55,7 +62,7 @@ function Body() {
     <div className="container-lg mt-2">
       <div className="card border-primary">
         <div className="card-header">
-          <BodyHeader items={items} setFilterRes={setFilterRes} setUpdBody={setUpdBody}></BodyHeader>
+          <BodyTabs grList={grList} setUpdBody={setUpdBody}></BodyTabs>
         </div>
         <div className="card-body table-responsive">
           <table className="table table-striped">
@@ -69,6 +76,7 @@ function Body() {
                 <th>&nbsp;&nbsp;Action</th>
                 <th>Logs</th>
                 <th>Edit</th>
+                <th style={{ width: "1%" }}>Link</th>
               </tr>
             </thead>
             <tbody>

@@ -37,6 +37,14 @@ function ItemShow(_props: any) {
           btnContent={<i className="bi bi-three-dots-vertical shade-hover fs-5" title="Edit"></i>}>  
         </EditItem>
       </td>
+      <td>
+        {_props.item.Link
+          ? <a href={_props.item.Link} target="_blank">
+              <i className="bi bi-box-arrow-up-right shade-hover fs-5"></i>
+            </a> 
+          : <></>
+        }
+      </td>
     </>
   )
 }

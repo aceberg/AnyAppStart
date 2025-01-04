@@ -8,6 +8,7 @@ function EditItem(_props: any) {
     Group: _props.item.Group,
     Name: _props.item.Name,
     Type: _props.item.Type,
+    Link: _props.item.Link,
     Exec: "",
     State: ""
   };
@@ -24,6 +25,7 @@ function EditItem(_props: any) {
   };
 
   const handleEdit = () => {
+    setFormData(item);
     setModalOpen(true);
   }
 
@@ -34,7 +36,8 @@ function EditItem(_props: any) {
   const saveChanges = async () => {
     if (JSON.stringify(formData) !== JSON.stringify(item)) {
       await apiSaveItem(item, formData);
-      console.log("SAVE:", formData);
+      console.log("SAVE (before):", item);
+      console.log("SAVE (after):", formData);
       _props.setUpdBody(true);
     }
   }
@@ -67,6 +70,8 @@ function EditItem(_props: any) {
             <input className="form-control mb-3" defaultValue={item.Name} id="nid" name="Name" onChange={handleChange}></input>
             <label htmlFor="tid" className="form-label text-primary">Type</label>
             <input className="form-control mb-3" defaultValue={item.Type} id="tid" name="Type" onChange={handleChange}></input>
+            <label htmlFor="lid" className="form-label text-primary">Link</label>
+            <input className="form-control mb-3" defaultValue={item.Link} id="lid" name="Link" onChange={handleChange}></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>

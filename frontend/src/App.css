@@ -7,3 +7,23 @@
     background-color: #00000015;
     cursor: pointer;
 }
+
+/* TABS */
+.btn-tab, .btn-tab-main {
+    background-color: #00000000;
+    border-width: thin;
+    border-color: var(--bs-primary);
+    border-style: solid;
+    align-content: center;
+    padding-inline: 10%;
+    white-space: nowrap;
+    /* margin-inline: 0.1px; */
+}
+.btn-tab:hover {
+    background-color: #00000015;
+}
+
+.btn-tab-main {
+    border-bottom-color: #00000000;
+    border-bottom-width: thick;
+}

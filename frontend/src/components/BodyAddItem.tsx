@@ -8,6 +8,7 @@ function BodyAddItem(_props: any) {
     Group: "",
     Name: "",
     Type: "",
+    Link: "",
     State: "",
     Exec: ""
   };
