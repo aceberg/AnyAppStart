@@ -9,7 +9,7 @@ build:
 
 replace:
 	cd ../backend/internal/web/public/assets/ && \
-	cat index-*.js | sed 's/http:\/\/0.0.0.0:8855//' > index.js && \
+	cat index-*.js | sed 's/http:\/\/0.0.0.0:8830//' > index.js && \
 	cat index-*.css > index.css && \
 	rm index-*
 
