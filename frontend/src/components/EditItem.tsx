@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BootstrapModal from "./Modal";
 import { apiSaveItem, Item } from "../functions/api";
+import mobxStore from "../functions/store";
 
 function EditItem(_props: any) {
 
@@ -55,6 +56,13 @@ function EditItem(_props: any) {
     setModalOpen(false);
   }
 
+  const handleSelectType = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      Type: event.target.value,
+    }));
+  };
+
   return (
     <>
       <span onClick={handleEdit}>{_props.btnContent}</span>
@@ -69,7 +77,11 @@ function EditItem(_props: any) {
             <label htmlFor="nid" className="form-label text-primary">Name</label>
             <input className="form-control mb-3" defaultValue={item.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
             <label htmlFor="tid" className="form-label text-primary">Type</label>
-            <input className="form-control mb-3" defaultValue={item.Type} id="tid" name="Type" onChange={handleChange}></input>
+            <select className="form-select mb-3" id="tid" onChange={handleSelectType} value={formData.Type}>
+              {mobxStore?.typeList.map((t, i) => (
+                <option key={i} value={t.Name}>{t.Name}</option>
+              ))}
+            </select>
             <label htmlFor="lid" className="form-label text-primary">Link</label>
             <input className="form-control mb-3" defaultValue={item.Link} id="lid" name="Link" onChange={handleChange} placeholder="URL"></input>
             <hr></hr>

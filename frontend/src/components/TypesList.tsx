@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTypes, TypeStruct } from "../functions/api";
 import TypeEdit from "./TypeEdit";
+import mobxStore from "../functions/store";
 
 function TypesList(_props:any) {
 
@@ -8,8 +9,10 @@ function TypesList(_props:any) {
 
   useEffect(() => {
     const fetchData = async () => {
-    
-      setTypes(await getTypes());
+      
+      const t = await getTypes(); 
+      setTypes(t);
+      mobxStore.setTypeList(t);
     };
     
     fetchData();
