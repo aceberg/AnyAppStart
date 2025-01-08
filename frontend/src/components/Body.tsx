@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { getItems, Item } from "../functions/api"
+import { getItems } from "../functions/api"
 import ItemShow from "./ItemShow";
 import { filterItems, getGroupsList, sortItems } from "../functions/sortitems";
 import BodyTabs from "./BodyTabs";
+import { Item } from "../functions/exports";
 
 let sortField:keyof Item = "Exec";
 let sortWay:boolean = true;
@@ -69,20 +70,20 @@ function Body() {
             <thead>
               <tr>
                 <th style={{ width: "1%" }}></th>
-                <th><i className="bi bi-circle-fill"></i><i onClick={() => handleSort("State")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
-                <th>Group<i onClick={() => handleSort("Group")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
-                <th>Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th><i className="bi bi-circle"></i><i onClick={() => handleSort("State")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>Type<i onClick={() => handleSort("Type")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th>Icon</th>
+                <th>Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th>Group<i onClick={() => handleSort("Group")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>&nbsp;&nbsp;Action</th>
                 <th>Logs</th>
                 <th>Edit</th>
-                <th style={{ width: "1%" }}>Link</th>
               </tr>
             </thead>
             <tbody>
             {items?.map((item, i) => (
               <tr key={i}>
-                <td className="text-primary text-opacity-75">{i}.</td>
+                <td className="text-primary text-opacity-75">{i+1}.</td>
                 <ItemShow item={item} setUpdBody={setUpdBody}></ItemShow>
               </tr>
             ))}

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Item } from "../functions/api";
 import BodyAddItem from "./BodyAddItem";
+import { Item } from "../functions/exports";
 
 function BodyHeader(_props: any) {
 

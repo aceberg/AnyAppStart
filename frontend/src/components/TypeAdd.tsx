@@ -1,4 +1,4 @@
-import { TypeStruct } from "../functions/api"
+import { TypeStruct } from "../functions/exports"
 import TypeEdit from "./TypeEdit"
 
 function TypeAdd(_props:any) {

@@ -1,4 +1,4 @@
-import { Item } from "../functions/api";
+import { Item } from "../functions/exports";
 import EditItem from "./EditItem"
 
 
@@ -9,6 +9,7 @@ function BodyAddItem(_props: any) {
     Name: "",
     Type: "",
     Link: "",
+    Icon: "",
     State: "",
     Exec: ""
   };

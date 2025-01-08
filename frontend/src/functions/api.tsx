@@ -1,49 +1,10 @@
+import { Conf, Item, TypeStruct } from "./exports";
+
 const api = 'http://0.0.0.0:8830';
-
-export interface Item {
-    Group: string;
-    Name: string;
-    Type: string;
-    Link: string;
-    Exec: string;
-    State: string;
-};
-
-export interface Conf {
-    Host: string;
-    Port: string;
-    Theme: string;
-    Color: string;
-    NodePath: string;
-};
-
-export interface TypeStruct {
-    Name: string;
-    Start: string;
-    Stop: string;
-    Restart: string;
-    Logs: string;
-    State: string;
-};
-
-export let appConfig:Conf = {
-    Host: "",
-    Port: "",
-    Theme: "",
-    Color: "",
-    NodePath: ""
-};
-
-export interface ToFilter {
-    Field: keyof Item;
-    Option: string;
-};
 
 export const getConfig = async () => {
     const url = api+'/api/conf';
     const conf = await (await fetch(url)).json();
-
-    appConfig = conf;
   
     return conf;
 };

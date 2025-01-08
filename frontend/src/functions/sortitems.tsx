@@ -1,4 +1,4 @@
-import { Item } from "./api";
+import { Item } from "./exports";
 
 export const sortItems = (items:Item[], field:keyof Item, asc:boolean, trig:boolean) => {
   trig = !trig; // trigger to run sort

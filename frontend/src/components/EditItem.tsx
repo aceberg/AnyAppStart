@@ -1,7 +1,8 @@
 import { useState } from "react";
 import BootstrapModal from "./Modal";
-import { apiSaveItem, Item } from "../functions/api";
+import { apiSaveItem } from "../functions/api";
 import mobxStore from "../functions/store";
+import { Item } from "../functions/exports";
 
 function EditItem(_props: any) {
 
@@ -10,6 +11,7 @@ function EditItem(_props: any) {
     Name: _props.item.Name,
     Type: _props.item.Type,
     Link: _props.item.Link,
+    Icon: _props.item.Icon,
     Exec: "",
     State: ""
   };
@@ -82,8 +84,10 @@ function EditItem(_props: any) {
                 <option key={i} value={t.Name}>{t.Name}</option>
               ))}
             </select>
+            <label htmlFor="iid" className="form-label text-primary">Icon</label>
+            <input className="form-control mb-3" defaultValue={item.Icon} id="iid" name="Icon" onChange={handleChange} placeholder="Link to Icon (optional)"></input>
             <label htmlFor="lid" className="form-label text-primary">Link</label>
-            <input className="form-control mb-3" defaultValue={item.Link} id="lid" name="Link" onChange={handleChange} placeholder="URL"></input>
+            <input className="form-control mb-3" defaultValue={item.Link} id="lid" name="Link" onChange={handleChange} placeholder="URL (optional)"></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>

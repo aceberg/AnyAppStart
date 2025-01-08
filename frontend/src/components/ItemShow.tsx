@@ -21,9 +21,22 @@ function ItemShow(_props: any) {
   return (
     <>
       <td><i className={_props.item.State == "on" ? stateOn : stateOff }></i></td>
-      <td>{_props.item.Group}</td>
-      <td>{_props.item.Name}</td>
       <td>{_props.item.Type}</td>
+      <td>
+        {_props.item.Icon
+        ? <a href={_props.item.Link} target="_blank">
+            <img src={_props.item.Icon} width={30} height={30}></img>
+          </a>
+        : <></>
+        }
+      </td>
+      <td>
+        {_props.item.Link
+          ? <a href={_props.item.Link} target="_blank">{_props.item.Name}</a> 
+          : _props.item.Name
+        }
+      </td>
+      <td>{_props.item.Group}</td>
       <td>
         <i className="bi bi-play shade-hover me-1 fs-5" onClick={() => handleExec("Start")} title="Start"></i>
         <i className="bi bi-arrow-clockwise shade-hover me-1 fs-5" onClick={() => handleExec("Restart")} title="Restart"></i>
@@ -36,14 +49,6 @@ function ItemShow(_props: any) {
         <EditItem item={_props.item} setUpdBody={_props.setUpdBody} 
           btnContent={<i className="bi bi-three-dots-vertical shade-hover fs-5" title="Edit"></i>}>  
         </EditItem>
-      </td>
-      <td>
-        {_props.item.Link
-          ? <a href={_props.item.Link} target="_blank">
-              <i className="bi bi-box-arrow-up-right shade-hover fs-5"></i>
-            </a> 
-          : <></>
-        }
       </td>
     </>
   )

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { getConfig, appConfig } from "../functions/api";
+import { getConfig } from "../functions/api";
 import ConfigDropdown from "./ConfigDropdown";
 import TypesDropdown from "./TypesDropdown";
+import mobxStore from "../functions/store";
 
 function Header() {
 
@@ -13,7 +14,8 @@ function Header() {
 
     const fetchData = async () => {
     
-      await getConfig();
+      const appConfig = await getConfig();
+      mobxStore.setAppConfig(appConfig);
 
       if (appConfig.NodePath == '') {
         setThemePath("https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/"+appConfig.Theme+"/bootstrap.min.css");

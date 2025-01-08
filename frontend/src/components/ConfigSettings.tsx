@@ -1,9 +1,12 @@
 import { useState } from "react";
 import BootstrapModal from "./Modal";
-import { apiSaveConf, appConfig, Conf } from "../functions/api";
+import { apiSaveConf } from "../functions/api";
+import mobxStore from "../functions/store";
+import { Conf } from "../functions/exports";
 
 function ConfigSettings(_props: any) {
 
+  const appConfig = mobxStore.appConfig;
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<Conf>(appConfig);
 
@@ -25,6 +28,7 @@ function ConfigSettings(_props: any) {
   const saveChanges = async () => {
     if (JSON.stringify(formData) !== JSON.stringify(appConfig)) {
       await apiSaveConf(formData);
+      mobxStore.setAppConfig(formData);
       console.log("SAVE:", formData);
       _props.headUpd(true);
     }

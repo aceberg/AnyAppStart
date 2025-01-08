@@ -1,8 +1,17 @@
 import { makeAutoObservable } from 'mobx';
-import { TypeStruct } from './api';
+import { Conf, TypeStruct } from './exports';
+
 
 class MobxStore {
     typeList:TypeStruct[] = [];
+
+    appConfig:Conf = {
+        Host: "",
+        Port: "",
+        Theme: "",
+        Color: "",
+        NodePath: ""
+    }
 
     constructor() {
         makeAutoObservable(this);
@@ -10,6 +19,10 @@ class MobxStore {
 
     setTypeList(list:TypeStruct[]) {
         this.typeList = list;
+    }
+
+    setAppConfig(conf:Conf) {
+        this.appConfig = conf;
     }
 }
 
