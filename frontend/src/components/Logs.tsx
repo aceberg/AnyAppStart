@@ -5,16 +5,18 @@ import BootstrapModal from "./Modal";
 function Logs(_props: any) {
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(true);
   const [logs, setLogs] = useState<string>("");
 
   const handleLogs = async () => {
+    setModalOpen(true);
     let item = _props.item;
     item.Exec = "Logs";
 
     console.log("LOGS:", item);
     const res = await apiExec(item);
     setLogs(res.Out);
-    setModalOpen(true);
+    setLoading(false);
   }
 
   const handleCloseModal = () => setModalOpen(false);
@@ -24,9 +26,9 @@ function Logs(_props: any) {
       <i className="bi bi-list-ul shade-hover fs-5" onClick={handleLogs} title="Logs"></i>
       <BootstrapModal
         isOpen={isModalOpen}
-        title="Logs"
+        title={"Logs: "+_props.item.Name}
         size="modal-xl"
-        body={<pre>{logs}</pre>}
+        body={isLoading ? <pre>Loading logs for {_props.item.Name}...</pre> : <pre>{logs}</pre>}
         onClose={handleCloseModal}
       />
     </>

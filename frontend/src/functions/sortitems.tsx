@@ -36,6 +36,7 @@ export const getGroupsList = (items:Item[]) => {
       }
     } 
   }
+  grList.sort();
   
   return grList;
 };

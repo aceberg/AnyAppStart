@@ -42,7 +42,7 @@ function BodyTabs(_props: any) {
     <div className='d-flex justify-content-between'>
       <div className="d-flex justify-content-left">
         <button className="btn-tab rounded-top-3" onClick={handleAny} id="g1s52lVbKscc" title="All Groups">
-          <i className="bi bi-three-dots"></i>
+          <i className="bi bi-check2-all fs-5 px-2"></i>
         </button>
         {grList?.map((key: string) => (
             <button key={key} onClick={() => handleFilter(key)} className="btn-tab rounded-top-3" id={key}>{key}</button>
