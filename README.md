@@ -3,9 +3,9 @@
 </a>AnyAppStart</h1>
 <br/>
 
-Start/Stop Docker, Systemd and other apps
+`Start/Stop/Restart/View Logs` for Docker, Systemd, SSH, VMs and anything else
 
-![Screenshot](https://raw.githubusercontent.com/aceberg/AnyAppStart/refs/heads/main/assets/Screenshot_05.png)
+![Screenshot](https://raw.githubusercontent.com/aceberg/AnyAppStart/refs/heads/main/assets/Screenshot_01.png)
 
 ## More screenshots
 <details>

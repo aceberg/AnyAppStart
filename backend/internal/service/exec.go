@@ -3,6 +3,7 @@ package service
 import (
 	"log"
 	"os/exec"
+	"strings"
 
 	"github.com/aceberg/AnyAppStart/internal/check"
 	"github.com/aceberg/AnyAppStart/internal/models"
@@ -17,7 +18,7 @@ func Exec(item models.Item, typesMap map[string]map[string]string) (bool, string
 		str, ok = t[item.Exec]
 		if ok {
 
-			str = str + " " + item.Name
+			str = strings.Replace(str, "$ITEMNAME", item.Name, -1)
 
 			log.Println("String to exec:", str)
 			cmd := exec.Command("sh", "-c", str)

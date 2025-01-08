@@ -65,13 +65,13 @@ function EditItem(_props: any) {
         body={
           <form>
             <label htmlFor="gid" className="form-label text-primary">Group</label>
-            <input className="form-control mb-3" defaultValue={item.Group} id="gid" name="Group" onChange={handleChange}></input>
+            <input className="form-control mb-3" defaultValue={item.Group} id="gid" name="Group" onChange={handleChange} placeholder="Not empty string"></input>
             <label htmlFor="nid" className="form-label text-primary">Name</label>
-            <input className="form-control mb-3" defaultValue={item.Name} id="nid" name="Name" onChange={handleChange}></input>
+            <input className="form-control mb-3" defaultValue={item.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
             <label htmlFor="tid" className="form-label text-primary">Type</label>
             <input className="form-control mb-3" defaultValue={item.Type} id="tid" name="Type" onChange={handleChange}></input>
             <label htmlFor="lid" className="form-label text-primary">Link</label>
-            <input className="form-control mb-3" defaultValue={item.Link} id="lid" name="Link" onChange={handleChange}></input>
+            <input className="form-control mb-3" defaultValue={item.Link} id="lid" name="Link" onChange={handleChange} placeholder="URL"></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>
