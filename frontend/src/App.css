@@ -1,10 +1,15 @@
+/* VARS */
+:root {
+    --transparent-light: #ffffff15;
+}
+
 /* Transparant icon button */
 .shade-hover {
     padding: 9px;
     border-radius: 15%;
 }
 .shade-hover:hover {
-    background-color: #00000015;
+    background-color: var(--transparent-light);
     cursor: pointer;
 }
 
@@ -20,7 +25,7 @@
     height: 2.5em;
 }
 .btn-tab:hover {
-    background-color: #00000015;
+    background-color: var(--transparent-light);
 }
 
 .btn-tab-main {

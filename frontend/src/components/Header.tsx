@@ -24,6 +24,9 @@ const Header: React.FC = observer(() => {
     }
 
     document.documentElement.setAttribute("data-bs-theme", color);
+    color === "dark"
+      ? document.documentElement.style.setProperty('--transparent-light', '#ffffff15')
+      : document.documentElement.style.setProperty('--transparent-light', '#00000015');
   }
 
   useEffect(() => {

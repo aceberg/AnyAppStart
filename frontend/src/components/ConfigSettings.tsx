@@ -82,7 +82,7 @@ function ConfigSettings(_props: any) {
               <option value="dark">dark</option>
             </select>
             <label htmlFor="tid" className="form-label text-primary">NodePath</label>
-            <input className="form-control mb-3" defaultValue={appConfig.NodePath} id="tid" name="NodePath" onChange={handleChange}></input>
+            <input className="form-control mb-3" defaultValue={appConfig.NodePath} id="tid" name="NodePath" onChange={handleChange} placeholder="Path to local node-bootstrap (optional)"></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <span></span>
