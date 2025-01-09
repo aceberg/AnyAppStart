@@ -134,8 +134,9 @@ func apiSaveType(c *gin.Context) {
 
 	types := yaml.ReadTypes(appConfig.TypePath)
 
-	// log.Println("OLD:", oldType)
-	// log.Println("NEW:", newType)
+	if types == nil {
+		types = make(map[string]map[string]string)
+	}
 
 	if oldType.Name == "" && newType.Name != "" { // If new type
 		types[newType.Name] = toOneType(newType)

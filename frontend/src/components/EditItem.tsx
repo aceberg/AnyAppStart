@@ -80,8 +80,9 @@ function EditItem(_props: any) {
             <label htmlFor="nid" className="form-label text-primary">Name</label>
             <input className="form-control mb-3" defaultValue={item.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
             <label htmlFor="tid" className="form-label text-primary">Type</label>
-            <select className="form-select mb-3" id="tid" onChange={handleSelectType} value={formData.Type}>
-              {mobxStore?.typeList.map((t, i) => (
+            <select className="form-select mb-3" id="tid" onChange={handleSelectType} defaultValue={formData.Type}>
+              <option value="" disabled>Select type</option>
+              {mobxStore.typeList?.map((t, i) => (
                 <option key={i} value={t.Name}>{t.Name}</option>
               ))}
             </select>
