@@ -1,0 +1,30 @@
+Docker:
+    Logs: docker logs $ITEMNAME
+    Restart: docker restart $ITEMNAME
+    Start: docker start $ITEMNAME
+    State: docker ps --filter status=running | grep $ITEMNAME
+    Stop: docker stop $ITEMNAME
+Systemd:
+    Logs: sudo systemctl status $ITEMNAME
+    Restart: sudo systemctl restart $ITEMNAME
+    Start: sudo systemctl start $ITEMNAME
+    State: sudo systemctl | grep running | grep $ITEMNAME
+    Stop: sudo systemctl stop $ITEMNAME
+VM:
+    Logs: sudo journalctl -u libvirtd.service
+    Restart: sudo virsh rebool $ITEMNAME
+    Start: sudo virsh start $ITEMNAME
+    State: sudo virsh list --state-running | grep $ITEMNAME
+    Stop: sudo virsh shutdown $ITEMNAME
+ssh-Docker:
+    Logs: ssh remote-host-ip -f docker logs $ITEMNAME
+    Restart: ssh remote-host-ip -f docker restart $ITEMNAME
+    Start: ssh remote-host-ip -f docker start $ITEMNAME
+    State: ssh remote-host-ip -f docker ps --filter status=running | grep $ITEMNAME
+    Stop: ssh remote-host-ip -f docker stop $ITEMNAME
+ssh-Systemd:
+    Logs: ssh remote-host-ip -f sudo systemctl status $ITEMNAME
+    Restart: ssh remote-host-ip -f sudo systemctl restart $ITEMNAME
+    Start: ssh remote-host-ip -f sudo systemctl start $ITEMNAME
+    State: ssh remote-host-ip -f sudo systemctl | grep running | grep $ITEMNAME
+    Stop: ssh remote-host-ip -f systemctl stop $ITEMNAME
