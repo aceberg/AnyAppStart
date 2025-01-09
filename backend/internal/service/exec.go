@@ -20,7 +20,7 @@ func Exec(item models.Item, typesMap map[string]map[string]string) (bool, string
 
 			str = strings.Replace(str, "$ITEMNAME", item.Name, -1)
 
-			log.Println("String to exec:", str)
+			log.Println("EXEC:", str)
 			cmd := exec.Command("sh", "-c", str)
 
 			out, err := cmd.CombinedOutput()

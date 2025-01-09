@@ -18,7 +18,7 @@ function byField(a:Item, b:Item, fieldName:keyof Item, down:boolean){
 };
 
 export const filterItems = (items:Item[], field:keyof Item, option: string) => {
-  if ((items !== null) && (items.length > 0)) {
+  if ((items !== null) && (option !== "") && (items.length > 0)) {
     items = items.filter((item) => item[field] == option);
   }
   

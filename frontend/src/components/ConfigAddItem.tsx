@@ -2,7 +2,7 @@ import { Item } from "../functions/exports";
 import EditItem from "./EditItem"
 
 
-function BodyAddItem(_props: any) {
+function ConfigAddItem(_props: any) {
 
   const item:Item = {
     Group: "",
@@ -16,11 +16,11 @@ function BodyAddItem(_props: any) {
 
   return (
     <>
-      <EditItem item={item} setUpdBody={_props.setUpdBody}
-          btnContent={<button className="btn btn-outline-primary">Add Item</button>}>
+      <EditItem item={item}
+          btnContent={<a href="#" className="dropdown-item">Add Item</a>}>
       </EditItem>
     </>
   )
 }
 
-export default BodyAddItem
+export default ConfigAddItem

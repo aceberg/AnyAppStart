@@ -29,8 +29,8 @@ function ConfigSettings(_props: any) {
     if (JSON.stringify(formData) !== JSON.stringify(appConfig)) {
       await apiSaveConf(formData);
       mobxStore.setAppConfig(formData);
-      console.log("SAVE:", formData);
-      _props.headUpd(true);
+      console.log("CONFIG:", formData);
+      mobxStore.setUpdHead(true);
     }
   }
 
@@ -51,7 +51,6 @@ function ConfigSettings(_props: any) {
   };
 
   const handleColor = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("SELECT", event.target.value);
     setFormData((prev) => ({
       ...prev,
       Color: event.target.value,

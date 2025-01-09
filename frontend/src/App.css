@@ -15,9 +15,9 @@
     border-color: var(--bs-primary);
     border-style: solid;
     align-content: center;
-    padding-inline: 10%;
+    padding-inline: 1.2em;
     white-space: nowrap;
-    /* margin-inline: 0.1px; */
+    height: 2.5em;
 }
 .btn-tab:hover {
     background-color: #00000015;
@@ -26,4 +26,11 @@
 .btn-tab-main {
     border-bottom-color: #00000000;
     border-bottom-width: thick;
+}
+
+/* GR-FILTER */
+.gr-filter {
+    background-color: #00000000;
+    cursor: pointer;
+    border-style: hidden;
 }

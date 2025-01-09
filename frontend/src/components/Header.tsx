@@ -3,55 +3,59 @@ import { getConfig } from "../functions/api";
 import ConfigDropdown from "./ConfigDropdown";
 import TypesDropdown from "./TypesDropdown";
 import mobxStore from "../functions/store";
+import { observer } from "mobx-react-lite";
+import { Conf } from "../functions/exports";
 
-function Header() {
+const Header: React.FC = observer(() => {
 
   const [themePath, setThemePath] = useState('');
   const [iconsPath, setIconsPath] = useState('');
-  const [updHead, setUpdHead] = useState<boolean>(false);
+  
+  const setCurrentTheme = (appConfig:Conf) => {
+    const theme = appConfig.Theme?appConfig.Theme:"minty";
+    const color = appConfig.Color?appConfig.Color:"dark";
+    
+    if (appConfig.NodePath == '') {
+      setThemePath("https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/"+theme+"/bootstrap.min.css");
+      setIconsPath("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
+    } else {
+      setThemePath(appConfig.NodePath+"/node_modules/bootswatch/dist/"+theme+"/bootstrap.min.css");
+      setIconsPath(appConfig.NodePath+"/node_modules/bootstrap-icons/font/bootstrap-icons.css");
+    }
+
+    document.documentElement.setAttribute("data-bs-theme", color);
+  }
 
   useEffect(() => {
-
     const fetchData = async () => {
-    
       const appConfig = await getConfig();
       mobxStore.setAppConfig(appConfig);
-
-      if (appConfig.NodePath == '') {
-        setThemePath("https://cdn.jsdelivr.net/npm/aceberg-bootswatch-fork@v5.3.3-2/dist/"+appConfig.Theme+"/bootstrap.min.css");
-        setIconsPath("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css");
-      } else {
-        setThemePath(appConfig.NodePath+"/node_modules/bootswatch/dist/"+appConfig.Theme+"/bootstrap.min.css");
-        setIconsPath(appConfig.NodePath+"/node_modules/bootstrap-icons/font/bootstrap-icons.css");
-      }
-
-      document.documentElement.setAttribute("data-bs-theme", appConfig.Color);
-    };
-    
+      setCurrentTheme(appConfig);
+    }
     fetchData();
-    setUpdHead(false);
-  }, [updHead]);
+    
+    mobxStore.setUpdHead(false);
+  }, [mobxStore.updHead]);
 
   const handleReload = () => {
     window.location.reload();
   };
 
   return (
-    <>
+    <div className="row">
       <link rel="stylesheet" href={iconsPath}></link> {/* icons */}
       <link rel="stylesheet" href={themePath}></link> {/* theme */}
-      <div className="container-lg">
-        <div className='d-flex justify-content-between mt-2'>
-          <h3 className="shade-hover rounded-3" onClick={handleReload}>AnyAppStart</h3>
-          <div className='d-flex justify-content-between'>
-            <TypesDropdown></TypesDropdown>
-            <span className="p-3"></span>
-            <ConfigDropdown headUpd={setUpdHead}></ConfigDropdown>
-          </div>
+      
+      <div className='d-flex justify-content-between mt-2'>
+        <h3 className="shade-hover rounded-3" onClick={handleReload}>AnyAppStart</h3>
+        <div className='d-flex justify-content-between'>
+          <TypesDropdown></TypesDropdown>
+          <span className="p-3"></span>
+          <ConfigDropdown></ConfigDropdown>
         </div>
       </div>
-    </>
+    </div>
   )
-}
+});
 
 export default Header

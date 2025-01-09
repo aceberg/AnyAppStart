@@ -41,7 +41,8 @@ function EditItem(_props: any) {
       await apiSaveItem(item, formData);
       console.log("SAVE (before):", item);
       console.log("SAVE (after):", formData);
-      _props.setUpdBody(true);
+      // _props.setUpdBody(true);
+      mobxStore.setUpdBody(true);
     }
   }
   
@@ -70,7 +71,7 @@ function EditItem(_props: any) {
       <span onClick={handleEdit}>{_props.btnContent}</span>
       <BootstrapModal
         isOpen={isModalOpen}
-        title="Edit Item"
+        title="Add/Edit Item"
         size=""
         body={
           <form>

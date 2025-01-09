@@ -24,8 +24,3 @@ export interface TypeStruct {
     Logs: string;
     State: string;
 };
-
-export interface ToFilter {
-    Field: keyof Item;
-    Option: string;
-};

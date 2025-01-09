@@ -1,6 +1,7 @@
 import { apiExec } from "../functions/api";
 import Logs from "./Logs";
 import EditItem from "./EditItem";
+import mobxStore from "../functions/store";
 
 function ItemShow(_props: any) {
 
@@ -14,7 +15,7 @@ function ItemShow(_props: any) {
     console.log("EXEC:", item);
     await apiExec(item);
     setTimeout(() => {
-      _props.setUpdBody(true);
+      mobxStore.setUpdBody(true);
     }, 1000);
   }
 
@@ -46,7 +47,7 @@ function ItemShow(_props: any) {
         <Logs item={_props.item}></Logs>
       </td>
       <td>
-        <EditItem item={_props.item} setUpdBody={_props.setUpdBody} 
+        <EditItem item={_props.item} 
           btnContent={<i className="bi bi-three-dots-vertical shade-hover fs-5" title="Edit"></i>}>  
         </EditItem>
       </td>

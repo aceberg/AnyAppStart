@@ -4,53 +4,40 @@ import ItemShow from "./ItemShow";
 import { filterItems, getGroupsList, sortItems } from "../functions/sortitems";
 import BodyTabs from "./BodyTabs";
 import { Item } from "../functions/exports";
+import { observer } from "mobx-react-lite";
+import mobxStore from "../functions/store";
+import BodyGroupFilter from "./BodyGroupFilter";
 
-let sortField:keyof Item = "Exec";
-let sortWay:boolean = true;
-let filterField:keyof Item = "Exec";
-let filterOption:string = "";
-
-function Body() {
+const Body: React.FC = observer(() => {
 
   const [items, setItems] = useState<Item[]>([]);
   const [grList, setGrList] = useState<string[]>([]);
-  const [updBody, setUpdBody] = useState<boolean>(false);
   const [sortTrigger, setSortTrigger] = useState<boolean>(false);
 
-  const handleSort = (sortby:keyof Item) => {
+  const handleSort = (sortBy:keyof Item) => {
     setSortTrigger(!sortTrigger);
-    if (sortby === sortField) {
-      sortWay = !sortWay;
-      localStorage.setItem('sort_way', JSON.stringify(sortWay));
+    if (sortBy === mobxStore.sortField) {
+      mobxStore.setSortWay(!mobxStore.sortWay);
     }
-    setItems(sortItems(items, sortby, sortWay, sortTrigger));
-    sortField = sortby;
-    localStorage.setItem('sort_field', sortField);
+    setItems(sortItems(items, sortBy, mobxStore.sortWay, sortTrigger));
+    mobxStore.setSortField(sortBy);
   }
 
   const fetchData = async () => {
-    const str1 = localStorage.getItem('sort_field');
-    sortField = str1 as keyof Item;
-    const str = localStorage.getItem('sort_way');
-    sortWay = str === "true";
-    const str2 = localStorage.getItem('filter_field');
-    filterField = str2 as keyof Item;
-    const str3 = localStorage.getItem('filter_option');
-    filterOption = str3 as string;
 
     let tmpItems:Item[] = await getItems();
     setGrList(getGroupsList(tmpItems));
-    if (filterOption !== "") {
-      tmpItems = filterItems(tmpItems, filterField, filterOption);
-    }
-
-    setItems(sortItems(tmpItems, sortField, sortWay, sortTrigger));
+    tmpItems = filterItems(tmpItems, "Type", mobxStore.getFilterType());
+    tmpItems = filterItems(tmpItems, "Group", mobxStore.getFilterGroup());
+    
+    setItems(sortItems(tmpItems, mobxStore.getSortField(), mobxStore.getSortWay(), sortTrigger));
   };
 
   useEffect(() => {
     fetchData();
-    setUpdBody(false);
-  }, [updBody]);
+    mobxStore.setUpdBody(false);
+    // console.log("BODY UPD");
+  }, [mobxStore.updBody]);
 
   useEffect(() => { // Regular update
     setInterval(() => {
@@ -59,11 +46,11 @@ function Body() {
   }, []);
 
   return (
-    <>
-    <div className="container-lg mt-2">
+    <div className="row mt-2">
+      <div className="col-md">
       <div className="card border-primary">
         <div className="card-header">
-          <BodyTabs grList={grList} setUpdBody={setUpdBody}></BodyTabs>
+          <BodyTabs></BodyTabs>
         </div>
         <div className="card-body table-responsive">
           <table className="table table-striped">
@@ -74,7 +61,7 @@ function Body() {
                 <th>Type<i onClick={() => handleSort("Type")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>Icon</th>
                 <th>Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
-                <th>Group<i onClick={() => handleSort("Group")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th><BodyGroupFilter grList={grList}></BodyGroupFilter><i onClick={() => handleSort("Group")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>&nbsp;&nbsp;Action</th>
                 <th>Logs</th>
                 <th>Edit</th>
@@ -84,17 +71,17 @@ function Body() {
             {items?.map((item, i) => (
               <tr key={i}>
                 <td className="text-primary text-opacity-75">{i+1}.</td>
-                <ItemShow item={item} setUpdBody={setUpdBody}></ItemShow>
+                <ItemShow item={item}></ItemShow>
               </tr>
             ))}
             </tbody>
           </table>
         </div>
       </div>
+      </div>
     </div>
-    </>
   )
-}
+});
 
 export default Body
 

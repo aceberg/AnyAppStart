@@ -1,6 +1,7 @@
 package web
 
 import (
+	// "log"
 	"sync"
 
 	"github.com/aceberg/AnyAppStart/internal/models"
@@ -42,18 +43,25 @@ func toOneType(tStruct models.TypeStruct) (tmpMap map[string]string) {
 
 func getAllStates(items []models.Item) (newItems []models.Item) {
 	var wg sync.WaitGroup
+	var counter int
 
 	types := yaml.ReadTypes(appConfig.TypePath)
 	newItems = []models.Item{}
 
 	for _, item := range items {
 
+		counter++
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
 			item = getOneState(item, types)
+			// log.Println("Getting state for Item", item.Name)
 			newItems = append(newItems, item)
+			counter--
 		}()
+		if counter > 3 {
+			wg.Wait()
+		}
 	}
 	wg.Wait()
 

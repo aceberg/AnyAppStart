@@ -97,7 +97,7 @@ func apiSaveConf(c *gin.Context) {
 	err := json.Unmarshal([]byte(str), &config)
 	check.IfError(err)
 
-	log.Println("CONF", config)
+	// log.Println("CONF", config)
 	appConfig.Host = config.Host
 	appConfig.Port = config.Port
 	appConfig.Theme = config.Theme
@@ -134,8 +134,8 @@ func apiSaveType(c *gin.Context) {
 
 	types := yaml.ReadTypes(appConfig.TypePath)
 
-	log.Println("OLD:", oldType)
-	log.Println("NEW:", newType)
+	// log.Println("OLD:", oldType)
+	// log.Println("NEW:", newType)
 
 	if oldType.Name == "" && newType.Name != "" { // If new type
 		types[newType.Name] = toOneType(newType)
@@ -152,7 +152,6 @@ func apiSaveType(c *gin.Context) {
 		}
 	}
 
-	log.Println("TYPES:", types)
 	yaml.WriteTypes(appConfig.TypePath, types)
 
 	c.IndentedJSON(http.StatusOK, true)
