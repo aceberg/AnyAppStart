@@ -3,13 +3,17 @@
 </a>AnyAppStart</h1>
 
 [![Main-Docker](https://github.com/aceberg/AnyAppStart/actions/workflows/main-docker.yml/badge.svg)](https://github.com/aceberg/AnyAppStart/actions/workflows/main-docker.yml)
+[![Binary-release](https://github.com/aceberg/AnyAppStart/actions/workflows/binary-release.yml/badge.svg)](https://github.com/aceberg/AnyAppStart/actions/workflows/binary-release.yml)
 ![GitHub License](https://img.shields.io/github/license/aceberg/AnyAppStart)
 
 Control panel to `Start`/`Stop`/`Restart`/`View Logs` for Docker, Systemd, VMs or anything else (with user scripts)
 
 - Backend: `Go`, Frontend: `React`, `TypeScript`, `MobX`
 - Small lightweight app, easy to set up and configure
-- User can create own types (like LXC or WakeOnLAN)
+- User can add any types (like LXC or WakeOnLAN)
+- Control remote machines via SSH
+- Config in `yaml` files, no DB
+- Simple API
 
 ![Screenshot](https://raw.githubusercontent.com/aceberg/AnyAppStart/refs/heads/main/assets/Screenshot_05.png)
 
