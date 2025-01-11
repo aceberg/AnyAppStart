@@ -107,7 +107,7 @@ ssh-Systemd:
 | PORT   | Port for web GUI | 8855 |
 | THEME | Any theme name from https://bootswatch.com in lowcase or [additional](https://github.com/aceberg/aceberg-bootswatch-fork) | minty |
 | COLOR | Background color: light or dark | dark |
-| NODEPATH | Path to local node modules |  |
+| NODEPATH | Path to local [node modules](https://github.com/aceberg/my-dockerfiles/tree/main/node-bootstrap) |  |
 </details>
 
 ## Options
@@ -117,7 +117,7 @@ ssh-Systemd:
 | Key  | Description | Default | Systemd (root) | Systemd (user) |
 | --------  | ----------- | ------- | ------- | ------- | 
 | -d | Path to config dir | /data/AnyAppStart | /etc/AnyAppStart | ~/.config/AnyAppStart |
-| -n | Path to node modules |  | | |
+| -n | Path to local [node modules](https://github.com/aceberg/my-dockerfiles/tree/main/node-bootstrap) |  | | |
 
 </details>
 
