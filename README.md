@@ -5,7 +5,7 @@
 [![Main-Docker](https://github.com/aceberg/AnyAppStart/actions/workflows/main-docker.yml/badge.svg)](https://github.com/aceberg/AnyAppStart/actions/workflows/main-docker.yml)
 ![GitHub License](https://img.shields.io/github/license/aceberg/AnyAppStart)
 
-Universal app to `Start`/`Stop`/`Restart`/`View Logs` for any Type of service (Docker, Systemd, VMs, LXC, remote, user scripts)
+Control panel to `Start`/`Stop`/`Restart`/`View Logs` for Docker, Systemd, VMs or anything else (with user scripts)
 
 - Backend: `Go`, Frontend: `React`, `TypeScript`, `MobX`
 - Small lightweight app, easy to set up and configure
@@ -61,6 +61,7 @@ sudo systemctl enable --now AnyAppStart@$USER.service
 ```
 After, you need to fill `types.yaml` file, either manually by clicking `Add Type` in GUI Types menu, or by copying this [types.yaml](https://github.com/aceberg/AnyAppStart/blob/main/example/types.yaml) example to `~/.config/AnyAppStart/` (or `/etc/AnyAppStart/` for root)
 ```yaml
+# $ITEMNAME is a variable that will be parsed into actual Items names
 Docker:
     Logs: docker logs $ITEMNAME
     Restart: docker restart $ITEMNAME

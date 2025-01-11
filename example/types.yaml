@@ -1,3 +1,4 @@
+# $ITEMNAME is a variable that will be parsed into actual Items names
 Docker:
     Logs: docker logs $ITEMNAME
     Restart: docker restart $ITEMNAME
