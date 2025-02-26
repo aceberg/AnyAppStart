@@ -14,7 +14,8 @@ function TypeEdit(_props: any) {
     Logs: _props.typeItem.Logs,
     State: _props.typeItem.State,
     CPU: _props.typeItem.CPU,
-    Mem: _props.typeItem.Mem
+    Mem: _props.typeItem.Mem,
+    SSH: _props.typeItem.SSH
   };
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -70,6 +71,8 @@ function TypeEdit(_props: any) {
           <form>
             <label htmlFor="nid" className="form-label text-primary">Name</label>
             <input className="form-control mb-3" defaultValue={oldType.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
+            <label htmlFor="sshid" className="form-label text-primary">SSH (optional)</label>
+            <input className="form-control mb-3" defaultValue={oldType.SSH} id="sshid" name="SSH" onChange={handleChange} placeholder=""></input>
             <p>Use variable <code>$ITEMNAME</code> in the commands below</p>
             <label htmlFor="gid" className="form-label text-primary">Start</label>
             <input className="form-control mb-3" defaultValue={oldType.Start} id="gid" name="Start" onChange={handleChange} placeholder="docker start $ITEMNAME"></input>

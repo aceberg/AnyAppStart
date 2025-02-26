@@ -28,4 +28,5 @@ export interface TypeStruct {
     State: string;
     CPU: string;
     Mem: string;
+    SSH: string;
 };

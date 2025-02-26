@@ -37,4 +37,5 @@ type TypeStruct struct {
 	State   string
 	Mem     string
 	CPU     string
+	SSH     string
 }
