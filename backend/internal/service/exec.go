@@ -1,7 +1,7 @@
 package service
 
 import (
-	"log"
+	// "log"
 	"os/exec"
 	"strings"
 
@@ -25,7 +25,7 @@ func Exec(item models.Item, typesMap map[string]map[string]string) (bool, string
 				str = ssh + " " + str
 			}
 
-			log.Println("EXEC:", str)
+			// log.Println("EXEC:", str)
 			cmd := exec.Command("sh", "-c", str)
 
 			out, err := cmd.CombinedOutput()

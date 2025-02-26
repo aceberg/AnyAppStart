@@ -1,8 +1,8 @@
 import { apiExec } from "../functions/api";
 import Logs from "./Logs";
 import EditItem from "./EditItem";
-import mobxStore from "../functions/store";
-
+import { updItemState } from "../functions/updstate";
+import toast, { Toaster } from 'react-hot-toast';
 
 function ItemShow(_props: any) {
 
@@ -10,15 +10,22 @@ function ItemShow(_props: any) {
     _props.item.Exec = exec;
 
     console.log("EXEC:", _props.item);
-    await apiExec(_props.item);
-    setTimeout(() => {
-      mobxStore.setUpdBody(true);
-    }, 1000);
+    const res = await apiExec(_props.item);
+    updItemState(_props.item);
+    if (res.Ok) {
+      toast('"'+ exec +'" executed on "'+ _props.item.Name +'"', {
+        style: {
+          borderRadius: '10px',
+          background: '#000',
+          color: '#fff',
+        },
+      });
+    }
   }
 
   return (
     <>
-      <td>{_props.item.Type}</td>
+      <td>{_props.item.Type}<Toaster position="top-center"/></td>
       <td>
         {_props.item.Icon
         ? <a href={_props.item.Link} target="_blank">

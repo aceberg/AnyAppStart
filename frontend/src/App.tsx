@@ -3,25 +3,12 @@ import './App.css'
 import Body from './components/Body'
 import Header from './components/Header'
 import { useEffect } from "react";
-import { updAllItems } from "./functions/updstate";
-import { getItems } from "./functions/api";
-import mobxStore from "./functions/store";
+import { fetchItems, updAllItems } from "./functions/updstate";
 
 function App() {
 
-  const fetchData = async () => {
-  
-    const items = await getItems();
-    mobxStore.setItemList(items);
-    mobxStore.setUpdBody(true);
-  }
-
   useEffect(() => {
-    fetchData();
-
-    setTimeout(() => {
-      updAllItems();
-    }, 1000);
+    fetchItems();
 
     setInterval(() => {
       updAllItems();

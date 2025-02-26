@@ -3,6 +3,7 @@ import BootstrapModal from "./Modal";
 import { apiSaveItem } from "../functions/api";
 import mobxStore from "../functions/store";
 import { Item } from "../functions/exports";
+import { fetchItems } from "../functions/updstate";
 
 function EditItem(_props: any) {
 
@@ -42,10 +43,10 @@ function EditItem(_props: any) {
   const saveChanges = async () => {
     if (JSON.stringify(formData) !== JSON.stringify(item)) {
       await apiSaveItem(item, formData);
-      console.log("SAVE (before):", item);
-      console.log("SAVE (after):", formData);
-      // _props.setUpdBody(true);
-      mobxStore.setUpdBody(true);
+      
+      setTimeout(() => {
+        fetchItems();
+      }, 1000);
     }
   }
   

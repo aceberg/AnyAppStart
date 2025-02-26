@@ -76,7 +76,7 @@ func apiSaveItem(c *gin.Context) {
 		items = append(items, newItem)
 	} else {
 		for _, item := range yaml.Read(appConfig.ItemPath) {
-			if item == oldItem {
+			if item.Name == oldItem.Name && item.Type == oldItem.Type {
 				if newItem.Name != "" {
 					items = append(items, newItem)
 				}

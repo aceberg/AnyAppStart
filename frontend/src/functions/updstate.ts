@@ -1,4 +1,4 @@
-import { apiExec } from "./api";
+import { apiExec, getItems } from "./api";
 import { Item } from "./exports";
 import mobxStore from "./store";
 
@@ -7,7 +7,7 @@ interface Res {
   Out: string;
 }
 
-async function updItemState(item:Item) {
+export async function updItemState(item:Item) {
   
   let res:Res;
   item.Exec = "State";
@@ -39,4 +39,15 @@ export function updAllItems() {
     // console.log("ITEM", item);
     updItemState(item);
   }
+}
+
+export const fetchItems = async () => {
+  
+  const items = await getItems();
+  mobxStore.setItemList(items);
+  mobxStore.setUpdBody(true);
+
+  setTimeout(() => {
+    updAllItems();
+  }, 1000);
 }
