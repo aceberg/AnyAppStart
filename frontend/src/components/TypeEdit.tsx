@@ -12,7 +12,9 @@ function TypeEdit(_props: any) {
     Stop: _props.typeItem.Stop,
     Restart: _props.typeItem.Restart,
     Logs: _props.typeItem.Logs,
-    State: _props.typeItem.State
+    State: _props.typeItem.State,
+    CPU: _props.typeItem.CPU,
+    Mem: _props.typeItem.Mem
   };
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -70,15 +72,19 @@ function TypeEdit(_props: any) {
             <input className="form-control mb-3" defaultValue={oldType.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
             <p>Use variable <code>$ITEMNAME</code> in the commands below</p>
             <label htmlFor="gid" className="form-label text-primary">Start</label>
-            <input className="form-control mb-3" defaultValue={oldType.Start} id="gid" name="Start" onChange={handleChange} placeholder="Example: docker start $ITEMNAME"></input>
+            <input className="form-control mb-3" defaultValue={oldType.Start} id="gid" name="Start" onChange={handleChange} placeholder="docker start $ITEMNAME"></input>
             <label htmlFor="oid" className="form-label text-primary">Stop</label>
-            <input className="form-control mb-3" defaultValue={oldType.Stop} id="oid" name="Stop" onChange={handleChange} placeholder="Example: docker stop $ITEMNAME"></input>
+            <input className="form-control mb-3" defaultValue={oldType.Stop} id="oid" name="Stop" onChange={handleChange} placeholder="docker stop $ITEMNAME"></input>
             <label htmlFor="rid" className="form-label text-primary">Restart</label>
-            <input className="form-control mb-3" defaultValue={oldType.Restart} id="rid" name="Restart" onChange={handleChange} placeholder="Example: docker restart $ITEMNAME"></input>
+            <input className="form-control mb-3" defaultValue={oldType.Restart} id="rid" name="Restart" onChange={handleChange} placeholder="docker restart $ITEMNAME"></input>
             <label htmlFor="lid" className="form-label text-primary">Logs</label>
-            <input className="form-control mb-3" defaultValue={oldType.Logs} id="lid" name="Logs" onChange={handleChange} placeholder="Example: docker logs $ITEMNAME"></input>
+            <input className="form-control mb-3" defaultValue={oldType.Logs} id="lid" name="Logs" onChange={handleChange} placeholder="docker logs $ITEMNAME"></input>
             <label htmlFor="tid" className="form-label text-primary">State</label>
-            <input className="form-control mb-3" defaultValue={oldType.State} id="tid" name="State" onChange={handleChange} placeholder="Example: docker ps --filter status=running | grep $ITEMNAME"></input>
+            <input className="form-control mb-3" defaultValue={oldType.State} id="tid" name="State" onChange={handleChange} placeholder="docker ps --filter status=running | grep $ITEMNAME"></input>
+            <label htmlFor="cpuid" className="form-label text-primary">CPU</label>
+            <input className="form-control mb-3" defaultValue={oldType.CPU} id="cpuid" name="CPU" onChange={handleChange} placeholder="docker stats --no-stream --format '{{ .CPUPerc }}' $ITEMNAME"></input>
+            <label htmlFor="memid" className="form-label text-primary">Mem</label>
+            <input className="form-control mb-3" defaultValue={oldType.Mem} id="memid" name="Mem" onChange={handleChange} placeholder="docker stats --no-stream --format '{{ .MemUsage }}' $ITEMNAME | awk '{print $1}'"></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>

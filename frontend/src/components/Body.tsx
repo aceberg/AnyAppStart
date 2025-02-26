@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { getItems } from "../functions/api"
 import ItemShow from "./ItemShow";
 import { filterItems, getGroupsList, sortItems } from "../functions/sortitems";
 import BodyTabs from "./BodyTabs";
@@ -10,7 +9,9 @@ import BodyGroupFilter from "./BodyGroupFilter";
 
 const Body: React.FC = observer(() => {
 
-  const [items, setItems] = useState<Item[]>([]);
+  const stateOn = "bi bi-circle-fill text-success";
+  const stateOff = "bi bi-circle-fill text-danger";
+
   const [grList, setGrList] = useState<string[]>([]);
   const [sortTrigger, setSortTrigger] = useState<boolean>(false);
 
@@ -19,18 +20,18 @@ const Body: React.FC = observer(() => {
     if (sortBy === mobxStore.sortField) {
       mobxStore.setSortWay(!mobxStore.sortWay);
     }
-    setItems(sortItems(items, sortBy, mobxStore.sortWay, sortTrigger));
+    mobxStore.setItemFiltered(sortItems(mobxStore.itemFiltered, sortBy, mobxStore.sortWay, sortTrigger));
     mobxStore.setSortField(sortBy);
   }
 
-  const fetchData = async () => {
+  const fetchData = () => {
 
-    let tmpItems:Item[] = await getItems();
+    let tmpItems:Item[] = mobxStore.itemList;
     setGrList(getGroupsList(tmpItems));
     tmpItems = filterItems(tmpItems, "Type", mobxStore.getFilterType());
     tmpItems = filterItems(tmpItems, "Group", mobxStore.getFilterGroup());
     
-    setItems(sortItems(tmpItems, mobxStore.getSortField(), mobxStore.getSortWay(), sortTrigger));
+    mobxStore.setItemFiltered(sortItems(tmpItems, mobxStore.getSortField(), mobxStore.getSortWay(), sortTrigger));
   };
 
   useEffect(() => {
@@ -38,12 +39,6 @@ const Body: React.FC = observer(() => {
     mobxStore.setUpdBody(false);
     // console.log("BODY UPD");
   }, [mobxStore.updBody]);
-
-  useEffect(() => { // Regular update
-    setInterval(() => {
-      fetchData();
-    }, 60000); // 60000 ms = 1 minute
-  }, []);
 
   return (
     <div className="row mt-2">
@@ -58,6 +53,8 @@ const Body: React.FC = observer(() => {
               <tr>
                 <th style={{ width: "1%" }}></th>
                 <th><i className="bi bi-circle"></i><i onClick={() => handleSort("State")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th>CPU</th>
+                <th>Mem</th>
                 <th>Type<i onClick={() => handleSort("Type")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>Icon</th>
                 <th>Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
@@ -68,9 +65,12 @@ const Body: React.FC = observer(() => {
               </tr>
             </thead>
             <tbody>
-            {items?.map((item, i) => (
+            {mobxStore.itemFiltered?.map((item, i) => (
               <tr key={i}>
                 <td className="text-primary text-opacity-75">{i+1}.</td>
+                <td><i className={item.State == "on" ? stateOn : stateOff }></i></td>
+                <td>{item.CPU}</td>
+                <td>{item.Mem}</td>
                 <ItemShow item={item}></ItemShow>
               </tr>
             ))}

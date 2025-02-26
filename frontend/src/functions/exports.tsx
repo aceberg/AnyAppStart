@@ -1,4 +1,5 @@
 export interface Item {
+    ID: number;
     Group: string;
     Name: string;
     Type: string;
@@ -6,6 +7,8 @@ export interface Item {
     Icon: string;
     Exec: string;
     State: string;
+    Mem: string;
+    CPU: string;
 };
 
 export interface Conf {
@@ -23,4 +26,6 @@ export interface TypeStruct {
     Restart: string;
     Logs: string;
     State: string;
+    CPU: string;
+    Mem: string;
 };

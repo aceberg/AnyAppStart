@@ -49,11 +49,12 @@ func apiExec(c *gin.Context) {
 func apiGetItems(c *gin.Context) {
 
 	items := yaml.Read(appConfig.ItemPath)
-	items = getAllStates(items)
 
 	sort.Slice(items, func(i, j int) bool {
 		return items[i].Name < items[j].Name
 	})
+
+	items = setItemIDs(items)
 
 	c.IndentedJSON(http.StatusOK, items)
 }

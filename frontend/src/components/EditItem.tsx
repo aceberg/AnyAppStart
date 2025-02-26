@@ -7,13 +7,16 @@ import { Item } from "../functions/exports";
 function EditItem(_props: any) {
 
   const item:Item = {
+    ID: _props.item.ID,
     Group: _props.item.Group,
     Name: _props.item.Name,
     Type: _props.item.Type,
     Link: _props.item.Link,
     Icon: _props.item.Icon,
     Exec: "",
-    State: ""
+    State: "",
+    CPU: "",
+    Mem: "",
   };
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);

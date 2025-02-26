@@ -10,6 +10,8 @@ function TypeAdd(_props:any) {
     Restart: "",
     Logs: "",
     State: "",
+    CPU: "",
+    Mem: "",
   }
 
   return (

@@ -3,17 +3,14 @@ import Logs from "./Logs";
 import EditItem from "./EditItem";
 import mobxStore from "../functions/store";
 
+
 function ItemShow(_props: any) {
 
-  const stateOn = "bi bi-circle-fill text-success";
-  const stateOff = "bi bi-circle-fill text-danger";
-
   const handleExec = async (exec: string) => {
-    let item = _props.item;
-    item.Exec = exec;
+    _props.item.Exec = exec;
 
-    console.log("EXEC:", item);
-    await apiExec(item);
+    console.log("EXEC:", _props.item);
+    await apiExec(_props.item);
     setTimeout(() => {
       mobxStore.setUpdBody(true);
     }, 1000);
@@ -21,7 +18,6 @@ function ItemShow(_props: any) {
 
   return (
     <>
-      <td><i className={_props.item.State == "on" ? stateOn : stateOff }></i></td>
       <td>{_props.item.Type}</td>
       <td>
         {_props.item.Icon
@@ -56,3 +52,4 @@ function ItemShow(_props: any) {
 }
 
 export default ItemShow
+

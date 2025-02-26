@@ -2,11 +2,8 @@ package web
 
 import (
 	// "log"
-	"sync"
 
 	"github.com/aceberg/AnyAppStart/internal/models"
-	"github.com/aceberg/AnyAppStart/internal/service"
-	"github.com/aceberg/AnyAppStart/internal/yaml"
 )
 
 func typesToStruct(types map[string]map[string]string) (typeStructArray []models.TypeStruct) {
@@ -21,6 +18,8 @@ func typesToStruct(types map[string]map[string]string) (typeStructArray []models
 		oneStruct.Stop = value["Stop"]
 		oneStruct.Logs = value["Logs"]
 		oneStruct.State = value["State"]
+		oneStruct.Mem = value["Mem"]
+		oneStruct.CPU = value["CPU"]
 
 		typeStructArray = append(typeStructArray, oneStruct)
 	}
@@ -37,46 +36,18 @@ func toOneType(tStruct models.TypeStruct) (tmpMap map[string]string) {
 	tmpMap["Restart"] = tStruct.Restart
 	tmpMap["Logs"] = tStruct.Logs
 	tmpMap["State"] = tStruct.State
+	tmpMap["Mem"] = tStruct.Mem
+	tmpMap["CPU"] = tStruct.CPU
 
 	return tmpMap
 }
 
-func getAllStates(items []models.Item) (newItems []models.Item) {
-	var wg sync.WaitGroup
-	var counter int
+func setItemIDs(items []models.Item) []models.Item {
+	var newItems []models.Item
 
-	types := yaml.ReadTypes(appConfig.TypePath)
-	newItems = []models.Item{}
-
-	for _, item := range items {
-
-		counter++
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			item = getOneState(item, types)
-			// log.Println("Getting state for Item", item.Name)
-			newItems = append(newItems, item)
-			counter--
-		}()
-		if counter > 3 {
-			wg.Wait()
-		}
+	for i, item := range items {
+		item.ID = i
+		newItems = append(newItems, item)
 	}
-	wg.Wait()
-
 	return newItems
-}
-
-func getOneState(item models.Item, types map[string]map[string]string) models.Item {
-
-	item.Exec = "State"
-	ok, _ := service.Exec(item, types)
-	if ok {
-		item.State = "on"
-	} else {
-		item.State = "off"
-	}
-
-	return item
 }

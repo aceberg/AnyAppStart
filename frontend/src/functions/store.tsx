@@ -1,10 +1,31 @@
-import { makeAutoObservable } from 'mobx';
+import { action, makeAutoObservable } from 'mobx';
 import { Conf, Item, TypeStruct } from './exports';
 
 
 class MobxStore {
     constructor() {
-        makeAutoObservable(this);
+        makeAutoObservable(this, {
+            updItemList: action
+        });
+    } 
+
+    itemList:Item[] = [];
+    setItemList(list:Item[]) {
+        this.itemList = list;
+    }
+    updItemList(newItem:Item) {
+        this.itemList.forEach((item, i) => {
+            if (item.ID == newItem.ID) {
+                action(() => {
+                    this.itemList[i] = newItem
+                });
+            }
+        });
+    }
+
+    itemFiltered:Item[] = [];
+    setItemFiltered(list:Item[]) {
+        this.itemFiltered = list;
     }
 
     typeList:TypeStruct[] = [];

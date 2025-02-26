@@ -5,13 +5,16 @@ import EditItem from "./EditItem"
 function ConfigAddItem(_props: any) {
 
   const item:Item = {
+    ID: 0,
     Group: "",
     Name: "",
     Type: "",
     Link: "",
     Icon: "",
     State: "",
-    Exec: ""
+    Exec: "",
+    CPU: "",
+    Mem: "",
   };
 
   return (
