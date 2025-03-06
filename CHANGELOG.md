@@ -2,6 +2,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2025-03-07
+### Added
+- SSH from Docker container
+- CPU, Memory stat
+- Toast notification on Start/Stop/Restart
+- New `types.yaml` example
+
 ## [0.1.2] - 2025-01-09
 ### Added
 - MobX store
