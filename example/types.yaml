@@ -1,31 +1,45 @@
 # $ITEMNAME is a variable that will be parsed into actual Items names
 Docker:
+    CPU: docker stats --no-stream --format '{{ .CPUPerc }}' $ITEMNAME
     Logs: docker logs $ITEMNAME
+    Mem: docker stats --no-stream --format '{{ .MemUsage }}' $ITEMNAME | awk '{print $1}'
     Restart: docker restart $ITEMNAME
     Start: docker start $ITEMNAME
     State: docker ps --filter status=running | grep $ITEMNAME
     Stop: docker stop $ITEMNAME
 Systemd:
+    CPU: '''ps -p $(systemctl show -p MainPID --value $ITEMNAME) -o %cpu='''
     Logs: sudo systemctl status $ITEMNAME
+    Mem: sudo systemctl status $ITEMNAME | grep Memory | awk '{print $2}'
     Restart: sudo systemctl restart $ITEMNAME
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
     Start: sudo systemctl start $ITEMNAME
     State: sudo systemctl | grep running | grep $ITEMNAME
     Stop: sudo systemctl stop $ITEMNAME
 VM:
+    CPU: ""
     Logs: sudo journalctl -u libvirtd.service
+    Mem: ""
     Restart: sudo virsh reboot $ITEMNAME
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
     Start: sudo virsh start $ITEMNAME
     State: sudo virsh list --state-running | grep $ITEMNAME
     Stop: sudo virsh shutdown $ITEMNAME
 ssh-Docker:
-    Logs: ssh remote-host-ip -f docker logs $ITEMNAME
-    Restart: ssh remote-host-ip -f docker restart $ITEMNAME
-    Start: ssh remote-host-ip -f docker start $ITEMNAME
-    State: ssh remote-host-ip -f docker ps --filter status=running | grep $ITEMNAME
-    Stop: ssh remote-host-ip -f docker stop $ITEMNAME
+    CPU: docker stats --no-stream --format '{{ .CPUPerc }}' $ITEMNAME
+    Logs: docker logs $ITEMNAME
+    Mem: docker stats --no-stream --format '{{ .MemUsage }}' $ITEMNAME | awk '{print $1}'
+    Restart: docker restart $ITEMNAME
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
+    Start: docker start $ITEMNAME
+    State: docker ps --filter status=running | grep $ITEMNAME
+    Stop: docker stop $ITEMNAME
 ssh-Systemd:
-    Logs: ssh remote-host-ip -f sudo systemctl status $ITEMNAME
-    Restart: ssh remote-host-ip -f sudo systemctl restart $ITEMNAME
-    Start: ssh remote-host-ip -f sudo systemctl start $ITEMNAME
-    State: ssh remote-host-ip -f sudo systemctl | grep running | grep $ITEMNAME
-    Stop: ssh remote-host-ip -f systemctl stop $ITEMNAME
+    CPU: '''ps -p $(systemctl show -p MainPID --value $ITEMNAME) -o %cpu='''
+    Logs: sudo systemctl status $ITEMNAME
+    Mem: sudo systemctl status $ITEMNAME | grep Memory | awk '{print $2}'
+    Restart: sudo systemctl restart $ITEMNAME
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
+    Start: sudo systemctl start $ITEMNAME
+    State: sudo systemctl | grep running | grep $ITEMNAME
+    Stop: systemctl stop $ITEMNAME

@@ -66,13 +66,13 @@ function TypeEdit(_props: any) {
       <BootstrapModal
         isOpen={isModalOpen}
         title="Add/Edit Type"
-        size="modal-lg"
+        size="modal-xl"
         body={
           <form>
             <label htmlFor="nid" className="form-label text-primary">Name</label>
             <input className="form-control mb-3" defaultValue={oldType.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
             <label htmlFor="sshid" className="form-label text-primary">SSH (optional)</label>
-            <input className="form-control mb-3" defaultValue={oldType.SSH} id="sshid" name="SSH" onChange={handleChange} placeholder="ssh -i /data/AnyAppStart/your_key -oStrictHostKeyChecking=no username@192.168.1.11 -f"></input>
+            <input className="form-control mb-3" defaultValue={oldType.SSH} id="sshid" name="SSH" onChange={handleChange} placeholder="ssh -i /data/AnyAppStart/your_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f"></input>
             <p>Use variable <code>$ITEMNAME</code> in the commands below</p>
             <label htmlFor="gid" className="form-label text-primary">Start</label>
             <input className="form-control mb-3" defaultValue={oldType.Start} id="gid" name="Start" onChange={handleChange} placeholder="docker start $ITEMNAME"></input>
