@@ -45,6 +45,7 @@ docker run --name AnyAppStart \
   -p 8855:8855 \
 aceberg/anyappstart # or ghcr.io/aceberg/anyappstart
 ```
+Or use [docker-compose.yaml](https://github.com/aceberg/AnyAppStart/blob/main/docker-compose.yml)
 
 ### Binary
 All binary packages can be found in [latest](https://github.com/aceberg/AnyAppStart/releases/latest) release. There are `.deb`, `.rpm`, `.apk` (Alpine Linux) and `.tar.gz` files.   
