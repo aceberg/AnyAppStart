@@ -9,6 +9,9 @@ All notable changes to this project will be documented in this file.
 - Toast notification on Start/Stop/Restart
 - New `types.yaml` example
 
+## Fixed
+- Set `NODEPATH` with `-n` option
+
 ## [0.1.2] - 2025-01-09
 ### Added
 - MobX store

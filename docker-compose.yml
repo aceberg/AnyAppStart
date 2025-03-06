@@ -1,0 +1,24 @@
+version: "3"
+services:
+  node-bootstrap:       # optional, local themes and icons
+    image: aceberg/node-bootstrap           # dockerhub
+    # image: ghcr.io/aceberg/node-bootstrap # or github
+    restart: unless-stopped
+    ports:
+    - 8850:8850
+  anyappstart:
+    image: aceberg/anyappstart             # dockerhub
+    # image: ghcr.io/aceberg/anyappstart   # or github
+    restart: unless-stopped
+    ports:
+    - 8855:8855
+    volumes:
+    - ~/.dockerdata/anyappstart:/data/anyappstart
+    command: "-n http://YOUR-ADDRESS:8850" # node-bootstrap path, optional
+    environment:
+      TZ: Asia/Novosibirsk    # required, default: ""
+      # NODEPATH: "http://YOUR-ADDRESS:8850" # optional, default: ""
+      # HOST: "0.0.0.0"         # optional, default: 0.0.0.0
+      # PORT: "8855"            # optional, default: 8855
+      # THEME: "minty"          # optional, default: minty
+      # COLOR: "dark"           # optional, default: dark

@@ -40,6 +40,10 @@ func Gui(dirPath, nodePath string) {
 	appConfig.TypePath = dirPath + "/types.yaml"
 	check.Path(appConfig.TypePath)
 
+	if nodePath != "" {
+		appConfig.NodePath = nodePath
+	}
+
 	log.Println("INFO: starting web gui with config", appConfig.ConfPath)
 
 	address := appConfig.Host + ":" + appConfig.Port
