@@ -13,7 +13,7 @@ services:
     ports:
     - 8855:8855
     volumes:
-    - ~/.dockerdata/anyappstart:/data/anyappstart
+    - ~/.dockerdata/AnyAppStart:/data/AnyAppStart
     command: "-n http://YOUR-ADDRESS:8850" # node-bootstrap path, optional
     environment:
       TZ: Asia/Novosibirsk    # required, default: ""
