@@ -9,9 +9,8 @@ function ItemShow(_props: any) {
   const handleExec = async (exec: string) => {
     _props.item.Exec = exec;
 
-    console.log("EXEC:", _props.item);
+    // console.log("EXEC:", _props.item);
     const res = await apiExec(_props.item);
-    updItemState(_props.item);
     if (res.Ok) {
       toast('"'+ exec +'" executed on "'+ _props.item.Name +'"', {
         style: {
@@ -21,6 +20,9 @@ function ItemShow(_props: any) {
         },
       });
     }
+    setTimeout(() => {
+      updItemState(_props.item);
+    }, 1000);
   }
 
   return (
@@ -45,6 +47,7 @@ function ItemShow(_props: any) {
         <i className="bi bi-play shade-hover me-1 fs-5" onClick={() => handleExec("Start")} title="Start"></i>
         <i className="bi bi-arrow-clockwise shade-hover me-1 fs-5" onClick={() => handleExec("Restart")} title="Restart"></i>
         <i className="bi bi-stop shade-hover fs-5" onClick={() => handleExec("Stop")} title="Stop"></i>
+        <i className="bi bi-emoji-smile shade-hover me-1 fs-5" onClick={() => handleExec("AnyCom")} title="User defined command"></i>
       </td>
       <td>
         <Logs item={_props.item}></Logs>

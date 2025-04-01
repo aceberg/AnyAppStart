@@ -17,13 +17,12 @@ func Exec(item models.Item, typesMap map[string]map[string]string) (bool, string
 	if ok {
 		str, ok = t[item.Exec]
 		if ok {
-
-			str = strings.Replace(str, "$ITEMNAME", item.Name, -1)
-
 			ssh := t["SSH"]
 			if ssh != "" {
 				str = ssh + " " + str
 			}
+
+			str = strings.Replace(str, "$ITEMNAME", item.Name, -1)
 
 			// log.Println("EXEC:", str)
 			cmd := exec.Command("sh", "-c", str)

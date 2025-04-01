@@ -13,7 +13,7 @@ function Logs(_props: any) {
     let item = _props.item;
     item.Exec = "Logs";
 
-    console.log("LOGS:", item);
+    // console.log("LOGS:", item);
     const res = await apiExec(item);
     setLogs(res.Out);
     setLoading(false);

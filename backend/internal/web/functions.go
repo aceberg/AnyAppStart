@@ -21,6 +21,7 @@ func typesToStruct(types map[string]map[string]string) (typeStructArray []models
 		oneStruct.Mem = value["Mem"]
 		oneStruct.CPU = value["CPU"]
 		oneStruct.SSH = value["SSH"]
+		oneStruct.AnyCom = value["AnyCom"]
 
 		typeStructArray = append(typeStructArray, oneStruct)
 	}
@@ -40,6 +41,7 @@ func toOneType(tStruct models.TypeStruct) (tmpMap map[string]string) {
 	tmpMap["Mem"] = tStruct.Mem
 	tmpMap["CPU"] = tStruct.CPU
 	tmpMap["SSH"] = tStruct.SSH
+	tmpMap["AnyCom"] = tStruct.AnyCom
 
 	return tmpMap
 }

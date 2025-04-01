@@ -13,6 +13,7 @@ function TypeAdd(_props:any) {
     CPU: "",
     Mem: "",
     SSH: "",
+    AnyCom: "",
   }
 
   return (

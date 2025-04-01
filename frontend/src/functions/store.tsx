@@ -14,11 +14,11 @@ class MobxStore {
         this.itemList = list;
     }
     updItemList(newItem:Item) {
-        this.itemList.forEach((item, i) => {
+        this.itemList.map((item) => {
             if (item.ID == newItem.ID) {
-                action(() => {
-                    this.itemList[i] = newItem
-                });
+                return {item, State: newItem.State, CPU: newItem.CPU, Mem: newItem.Mem}
+            } else {
+                return item
             }
         });
     }

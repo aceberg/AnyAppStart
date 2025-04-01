@@ -29,4 +29,5 @@ export interface TypeStruct {
     CPU: string;
     Mem: string;
     SSH: string;
+    AnyCom: string;
 };

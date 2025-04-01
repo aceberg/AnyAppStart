@@ -38,4 +38,5 @@ type TypeStruct struct {
 	Mem     string
 	CPU     string
 	SSH     string
+	AnyCom  string
 }

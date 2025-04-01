@@ -48,7 +48,7 @@ const Body: React.FC = observer(() => {
           <BodyTabs></BodyTabs>
         </div>
         <div className="card-body table-responsive">
-          <table className="table table-striped">
+          <table className="table table-striped table-hover">
             <thead>
               <tr>
                 <th style={{ width: "1%" }}></th>

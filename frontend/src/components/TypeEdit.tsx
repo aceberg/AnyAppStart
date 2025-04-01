@@ -15,7 +15,8 @@ function TypeEdit(_props: any) {
     State: _props.typeItem.State,
     CPU: _props.typeItem.CPU,
     Mem: _props.typeItem.Mem,
-    SSH: _props.typeItem.SSH
+    SSH: _props.typeItem.SSH,
+    AnyCom: _props.typeItem.AnyCom,
   };
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -71,9 +72,9 @@ function TypeEdit(_props: any) {
           <form>
             <label htmlFor="nid" className="form-label text-primary">Name</label>
             <input className="form-control mb-3" defaultValue={oldType.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
+            <p>Use variable <code>$ITEMNAME</code> in the commands below</p>
             <label htmlFor="sshid" className="form-label text-primary">SSH (optional)</label>
             <input className="form-control mb-3" defaultValue={oldType.SSH} id="sshid" name="SSH" onChange={handleChange} placeholder="ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f"></input>
-            <p>Use variable <code>$ITEMNAME</code> in the commands below</p>
             <label htmlFor="gid" className="form-label text-primary">Start</label>
             <input className="form-control mb-3" defaultValue={oldType.Start} id="gid" name="Start" onChange={handleChange} placeholder="docker start $ITEMNAME"></input>
             <label htmlFor="oid" className="form-label text-primary">Stop</label>
@@ -88,6 +89,8 @@ function TypeEdit(_props: any) {
             <input className="form-control mb-3" defaultValue={oldType.CPU} id="cpuid" name="CPU" onChange={handleChange} placeholder="docker stats --no-stream --format '{{ .CPUPerc }}' $ITEMNAME"></input>
             <label htmlFor="memid" className="form-label text-primary">Mem</label>
             <input className="form-control mb-3" defaultValue={oldType.Mem} id="memid" name="Mem" onChange={handleChange} placeholder="docker stats --no-stream --format '{{ .MemUsage }}' $ITEMNAME | awk '{print $1}'"></input>
+            <label htmlFor="anyid" className="form-label text-primary">User defined command (AnyCom)</label>
+            <input className="form-control mb-3" defaultValue={oldType.AnyCom} id="anyid" name="AnyCom" onChange={handleChange}></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>

@@ -2,6 +2,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.1.4] - 2025-04-
+### Added
+- User defined command
+- Variable `$ITEMNAME` now can be used in `SSH` too
+- Vite config update
+
 ## [0.1.3] - 2025-03-07
 ### Added
 - SSH from Docker container
