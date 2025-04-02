@@ -3,8 +3,6 @@ package main
 import (
 	"flag"
 
-	_ "time/tzdata"
-
 	"github.com/aceberg/AnyAppStart/internal/web"
 )
 

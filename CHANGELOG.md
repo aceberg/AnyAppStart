@@ -2,12 +2,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## [0.1.4] - 2025-04-
+## [0.1.4] - 2025-04-02
 ### Added
 - User defined command [#2](https://github.com/aceberg/AnyAppStart/issues/2)
 - Variable `$ITEMNAME` now can be used in `SSH` too
 - Vite config update
 - Optimized Docker build
+
+### Fixed
+- Alpine goreleaser binary
 
 ## [0.1.3] - 2025-03-07
 ### Added

@@ -17,16 +17,15 @@ builds:
       - "7"
 
 nfpms:
-  - maintainer: aceberg <aceberg_a@proton.me>
+  - id: systemd
+    formats:
+    - deb
+    - rpm
+    maintainer: aceberg <aceberg_a@proton.me>
     description: Start/Stop Docker, Systemd and other apps
     homepage: https://github.com/aceberg/AnyAppStart
     license: MIT
     section: utils
-    formats:
-    - deb
-    - rpm
-    - apk
-    - termux.deb
     contents:
     - src: ./configs/AnyAppStart.service
       dst: /lib/systemd/system/AnyAppStart.service
@@ -34,6 +33,15 @@ nfpms:
       dst: /lib/systemd/system/AnyAppStart@.service
     scripts:
       postinstall: ./configs/postinstall.sh
+
+  - id: alpine
+    formats:
+    - apk
+    maintainer: aceberg <aceberg_a@proton.me>
+    description: Start/Stop Docker, Systemd and other apps
+    homepage: https://github.com/aceberg/AnyAppStart
+    license: MIT
+    section: utils
 
 archives:
   - files:
