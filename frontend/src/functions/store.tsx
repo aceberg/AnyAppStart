@@ -1,13 +1,15 @@
-import { action, makeAutoObservable } from 'mobx';
+import { configure, makeAutoObservable } from 'mobx';
 import { Conf, Item, TypeStruct } from './exports';
 
 
+configure({
+    enforceActions: "never",
+});
+
 class MobxStore {
     constructor() {
-        makeAutoObservable(this, {
-            updItemList: action
-        });
-    } 
+        makeAutoObservable(this);
+    }
 
     itemList:Item[] = [];
     setItemList(list:Item[]) {

@@ -30,11 +30,7 @@ func apiGetConfig(c *gin.Context) {
 
 func apiExec(c *gin.Context) {
 	var oneItem models.Item
-	type output struct {
-		Ok  bool
-		Out string
-	}
-	var data output
+	var data models.ExecOutput
 
 	oneItem.Name = c.Query("name")
 	oneItem.Type = c.Query("type")
@@ -157,4 +153,20 @@ func apiSaveType(c *gin.Context) {
 	yaml.WriteTypes(appConfig.TypePath, types)
 
 	c.IndentedJSON(http.StatusOK, true)
+}
+
+func apiExecAny(c *gin.Context) {
+	var item models.Item
+	var data models.ExecOutput
+
+	str := c.PostForm("item")
+	err := json.Unmarshal([]byte(str), &item)
+	check.IfError(err)
+
+	str = c.PostForm("command")
+
+	types := yaml.ReadTypes(appConfig.TypePath)
+	data.Ok, data.Out = service.ExecAny(item, types, str)
+
+	c.IndentedJSON(http.StatusOK, data)
 }

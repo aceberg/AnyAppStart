@@ -90,7 +90,7 @@ function TypeEdit(_props: any) {
             <label htmlFor="memid" className="form-label text-primary">Mem</label>
             <input className="form-control mb-3" defaultValue={oldType.Mem} id="memid" name="Mem" onChange={handleChange} placeholder="docker stats --no-stream --format '{{ .MemUsage }}' $ITEMNAME | awk '{print $1}'"></input>
             <label htmlFor="anyid" className="form-label text-primary">User defined command (AnyCom)</label>
-            <input className="form-control mb-3" defaultValue={oldType.AnyCom} id="anyid" name="AnyCom" onChange={handleChange}></input>
+            <input className="form-control mb-3" defaultValue={oldType.AnyCom} id="anyid" name="AnyCom" onChange={handleChange} placeholder="docker stats --no-stream"></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>

@@ -3,16 +3,12 @@ import './App.css'
 import Body from './components/Body'
 import Header from './components/Header'
 import { useEffect } from "react";
-import { fetchItems, updAllItems } from "./functions/updstate";
+import { fetchItems } from "./functions/updstate";
 
 function App() {
 
   useEffect(() => {
     fetchItems();
-
-    setInterval(() => {
-      updAllItems();
-    }, 60000); // 60000 ms = 1 minute
   }, []);
 
   return (

@@ -15,6 +15,7 @@ function ConfigAddItem(_props: any) {
     Exec: "",
     CPU: "",
     Mem: "",
+    AnyCom: "",
   };
 
   return (

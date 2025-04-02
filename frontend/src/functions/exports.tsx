@@ -9,6 +9,7 @@ export interface Item {
     State: string;
     Mem: string;
     CPU: string;
+    AnyCom: string;
 };
 
 export interface Conf {

@@ -18,6 +18,7 @@ function EditItem(_props: any) {
     State: "",
     CPU: "",
     Mem: "",
+    AnyCom: "",
   };
 
   const [isModalOpen, setModalOpen] = useState<boolean>(false);

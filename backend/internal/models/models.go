@@ -40,3 +40,9 @@ type TypeStruct struct {
 	SSH     string
 	AnyCom  string
 }
+
+// ExecOutput - result of Exec or ExecAny
+type ExecOutput struct {
+	Ok  bool
+	Out string
+}

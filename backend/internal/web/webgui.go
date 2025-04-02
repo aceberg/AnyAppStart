@@ -69,6 +69,7 @@ func Gui(dirPath, nodePath string) {
 
 	router.POST("/api/item", apiSaveItem) // api.go
 	router.POST("/api/conf", apiSaveConf) // api.go
+	router.POST("/api/exec", apiExecAny)  // api.go
 	router.POST("/api/type", apiSaveType) // api.go
 
 	err := router.Run(address)

@@ -1,5 +1,5 @@
-import { apiExec, getItems } from "./api";
-import { Item } from "./exports";
+import { apiExec, getItems, getTypes } from "./api";
+import { Item, TypeStruct } from "./exports";
 import mobxStore from "./store";
 
 interface Res {
@@ -36,18 +36,41 @@ export async function updItemState(item:Item) {
 export function updAllItems() {
 
   for (let item of mobxStore.itemList) {
-    // console.log("ITEM", item);
     updItemState(item);
   }
 }
 
-export const fetchItems = async () => {
-  
-  const items = await getItems();
-  mobxStore.setItemList(items);
-  mobxStore.setUpdBody(true);
+export const fetchItems = () => {
+
+  setAnyCom();
 
   setTimeout(() => {
     updAllItems();
   }, 1000);
+
+  setInterval(() => {
+    updAllItems();
+  }, 60000); // 60000 ms = 1 minute
+}
+
+export const setAnyCom = async () => {
+
+  const types:TypeStruct[] = await getTypes();
+  mobxStore.setTypeList(types);
+
+  let items:Item[] = await getItems();
+
+  types.forEach(type => {
+    items.map(item => {
+      if (item.Type === type.Name) {
+        item.AnyCom = type.AnyCom;
+        return item
+      } else {
+        return item
+      }
+    })
+  });
+
+  mobxStore.setItemList(items);
+  mobxStore.setUpdBody(true);
 }

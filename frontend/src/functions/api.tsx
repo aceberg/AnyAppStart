@@ -60,3 +60,27 @@ export const apiSaveConf = async (conf: Conf) => {
     request.open("POST", api+'/api/conf', true);
     request.send(data);
 };
+
+export const apiExecAny = async (item: Item, cmd: string) => {
+    let data = new FormData();
+  
+    data.set('item', JSON.stringify(item));
+    data.set('command', cmd);
+  
+    try {
+      let response = await fetch(api + '/api/exec', {
+          method: "POST",
+          body: data
+      });
+  
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      let result = await response.json();
+      return result;
+    } catch (error) {
+      console.error("Error:", error);
+      return null;
+    }
+  };

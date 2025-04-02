@@ -3,6 +3,7 @@ import Logs from "./Logs";
 import EditItem from "./EditItem";
 import { updItemState } from "../functions/updstate";
 import toast, { Toaster } from 'react-hot-toast';
+import UserCommand from "./UserCommand";
 
 function ItemShow(_props: any) {
 
@@ -47,7 +48,7 @@ function ItemShow(_props: any) {
         <i className="bi bi-play shade-hover me-1 fs-5" onClick={() => handleExec("Start")} title="Start"></i>
         <i className="bi bi-arrow-clockwise shade-hover me-1 fs-5" onClick={() => handleExec("Restart")} title="Restart"></i>
         <i className="bi bi-stop shade-hover fs-5" onClick={() => handleExec("Stop")} title="Stop"></i>
-        <i className="bi bi-emoji-smile shade-hover me-1 fs-5" onClick={() => handleExec("AnyCom")} title="User defined command"></i>
+        <UserCommand item={_props.item}></UserCommand>
       </td>
       <td>
         <Logs item={_props.item}></Logs>
