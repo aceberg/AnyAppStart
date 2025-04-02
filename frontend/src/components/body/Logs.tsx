@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { apiExec } from "../functions/api";
-import BootstrapModal from "./Modal";
+import { apiExec } from "../../functions/api";
+import BootstrapModal from "./../Modal";
 
 function Logs(_props: any) {
 

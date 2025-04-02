@@ -1,4 +1,4 @@
-import mobxStore from "../functions/store";
+import mobxStore from "../../functions/store";
 
 function BodyGroupFilter(_props: any) {
 

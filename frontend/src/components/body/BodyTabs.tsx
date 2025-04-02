@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import mobxStore from "../functions/store";
-import { TypeStruct } from "../functions/exports";
+import mobxStore from "../../functions/store";
+import { TypeStruct } from "../../functions/exports";
 
 
 function BodyTabs(_props: any) {

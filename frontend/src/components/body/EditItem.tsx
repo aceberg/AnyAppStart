@@ -1,9 +1,9 @@
 import { useState } from "react";
-import BootstrapModal from "./Modal";
-import { apiSaveItem } from "../functions/api";
-import mobxStore from "../functions/store";
-import { Item } from "../functions/exports";
-import { fetchItems } from "../functions/updstate";
+import BootstrapModal from "../Modal";
+import { apiSaveItem } from "../../functions/api";
+import mobxStore from "../../functions/store";
+import { Item } from "../../functions/exports";
+import { fetchItems } from "../../functions/updstate";
 
 function EditItem(_props: any) {
 

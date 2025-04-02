@@ -1,7 +1,7 @@
-import { apiExec } from "../functions/api";
+import { apiExec } from "../../functions/api";
 import Logs from "./Logs";
 import EditItem from "./EditItem";
-import { updItemState } from "../functions/updstate";
+import { updItemState } from "../../functions/updstate";
 import toast, { Toaster } from 'react-hot-toast';
 import UserCommand from "./UserCommand";
 

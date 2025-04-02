@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import ItemShow from "./ItemShow";
+import ItemShow from "./body/ItemShow";
 import { filterItems, getGroupsList, sortItems } from "../functions/sortitems";
-import BodyTabs from "./BodyTabs";
+import BodyTabs from "./body/BodyTabs";
 import { Item } from "../functions/exports";
 import { observer } from "mobx-react-lite";
 import mobxStore from "../functions/store";
-import BodyGroupFilter from "./BodyGroupFilter";
+import BodyGroupFilter from "./body/BodyGroupFilter";
 
 const Body: React.FC = observer(() => {
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getTypes } from "../functions/api";
+import { getTypes } from "../../functions/api";
 import TypeEdit from "./TypeEdit";
-import mobxStore from "../functions/store";
-import { TypeStruct } from "../functions/exports";
+import mobxStore from "../../functions/store";
+import { TypeStruct } from "../../functions/exports";
 
 function TypesList(_props:any) {
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getConfig } from "../functions/api";
-import ConfigDropdown from "./ConfigDropdown";
-import TypesDropdown from "./TypesDropdown";
+import ConfigDropdown from "./header/ConfigDropdown";
+import TypesDropdown from "./header/TypesDropdown";
 import mobxStore from "../functions/store";
 import { observer } from "mobx-react-lite";
 import { Conf } from "../functions/exports";

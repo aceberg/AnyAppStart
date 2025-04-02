@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { apiExecAny } from "../functions/api";
-import BootstrapModal from "./Modal";
+import { apiExecAny } from "../../functions/api";
+import BootstrapModal from "../Modal";
 
 function UserCommand(_props: any) {
 

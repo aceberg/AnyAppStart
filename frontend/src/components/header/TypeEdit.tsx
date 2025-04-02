@@ -1,8 +1,8 @@
 import { useState } from "react";
-import BootstrapModal from "./Modal";
-import { apiSaveType } from "../functions/api";
-import { TypeStruct } from "../functions/exports";
-import mobxStore from "../functions/store";
+import BootstrapModal from "../Modal";
+import { apiSaveType } from "../../functions/api";
+import { TypeStruct } from "../../functions/exports";
+import mobxStore from "../../functions/store";
 
 function TypeEdit(_props: any) {
 

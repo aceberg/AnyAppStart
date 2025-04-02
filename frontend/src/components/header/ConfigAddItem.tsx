@@ -1,5 +1,5 @@
-import { Item } from "../functions/exports";
-import EditItem from "./EditItem"
+import { Item } from "../../functions/exports";
+import EditItem from "../body/EditItem"
 
 
 function ConfigAddItem(_props: any) {
