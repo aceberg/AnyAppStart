@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import mobxStore from "../../functions/store";
 import { TypeStruct } from "../../functions/exports";
+import { applyFilters } from "../../functions/sort_filter";
+import { observer } from "mobx-react-lite";
 
 
-function BodyTabs(_props: any) {
+const BodyTabs: React.FC = observer(() => {
 
   const typeList = mobxStore.typeList;
 
   const handleFilter = (key: string) => {
     mobxStore.setFilterType(key);
-    mobxStore.setUpdBody(true);
+    applyFilters();
     setMainTab(key);
   };
 
@@ -24,8 +26,10 @@ function BodyTabs(_props: any) {
   }
 
   useEffect(() => {
-    setMainTab(mobxStore.filterType);
-  }, [mobxStore.filterType]);
+    setTimeout(() => {
+      setMainTab(mobxStore.filterType);
+    }, 1000);
+  }, []);
 
   return (
     <div className="d-flex justify-content-left flex-wrap">
@@ -37,6 +41,6 @@ function BodyTabs(_props: any) {
       ))}
     </div>
   )
-}
+});
 
 export default BodyTabs

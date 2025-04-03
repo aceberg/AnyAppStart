@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
@@ -10,13 +11,13 @@ interface BootstrapModalProps {
   // onConfirm?: () => void; // Optional callback for confirm action
 }
 
-const BootstrapModal: React.FC<BootstrapModalProps> = ({ 
-  isOpen, 
-  title, 
-  size,
-  body,
-  onClose
-}) => {
+const BootstrapModal: React.FC<BootstrapModalProps> = React.memo(({ 
+    isOpen, 
+    title, 
+    size,
+    body,
+    onClose
+  }) => {
 
   const modalRef = useRef<HTMLDivElement>(null);
 
@@ -61,6 +62,6 @@ const BootstrapModal: React.FC<BootstrapModalProps> = ({
     </div>,
     document.body
   );
-};
+});
 
 export default BootstrapModal;

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { getConfig } from "../functions/api";
 import ConfigDropdown from "./header/ConfigDropdown";
 import TypesDropdown from "./header/TypesDropdown";
 import mobxStore from "../functions/store";
-import { observer } from "mobx-react-lite";
+import { getConfig } from "../functions/api";
 import { Conf } from "../functions/exports";
+import { observer } from "mobx-react-lite";
 
 const Header: React.FC = observer(() => {
 
   const [themePath, setThemePath] = useState('');
   const [iconsPath, setIconsPath] = useState('');
-  
+
   const setCurrentTheme = (appConfig:Conf) => {
     const theme = appConfig.Theme?appConfig.Theme:"minty";
     const color = appConfig.Color?appConfig.Color:"dark";
@@ -37,7 +37,6 @@ const Header: React.FC = observer(() => {
     }
     fetchData();
     
-    mobxStore.setUpdHead(false);
   }, [mobxStore.updHead]);
 
   const handleReload = () => {

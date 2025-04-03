@@ -2,7 +2,7 @@ import { Item } from "../../functions/exports";
 import EditItem from "../body/EditItem"
 
 
-function ConfigAddItem(_props: any) {
+function ConfigAddItem() {
 
   const item:Item = {
     ID: 0,

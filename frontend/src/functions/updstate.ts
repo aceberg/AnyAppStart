@@ -1,5 +1,6 @@
 import { apiExec, getItems, getTypes } from "./api";
 import { Item, TypeStruct } from "./exports";
+import { applyFilters, updGroupsList } from "./sort_filter";
 import mobxStore from "./store";
 
 interface Res {
@@ -72,5 +73,6 @@ export const setAnyCom = async () => {
   });
 
   mobxStore.setItemList(items);
-  mobxStore.setUpdBody(true);
+  applyFilters();
+  updGroupsList();
 }

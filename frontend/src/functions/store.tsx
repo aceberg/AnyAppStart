@@ -46,14 +46,14 @@ class MobxStore {
         this.appConfig = conf;
     }
 
-    updHead:boolean = false;
-    setUpdHead(b:boolean) {
-        this.updHead = b;
+    grList:string[] = [];
+    setGrList(list:string[]) {
+        this.grList = list;
     }
 
-    updBody:boolean = false;
-    setUpdBody(b:boolean) {
-        this.updBody = b;
+    updHead:boolean = false;
+    setUpdHead() {
+        this.updHead = !this.updHead;
     }
 
     sortField:keyof Item = "Exec";

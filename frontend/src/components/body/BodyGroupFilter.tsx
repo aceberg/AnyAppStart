@@ -1,12 +1,13 @@
+import { applyFilters } from "../../functions/sort_filter";
 import mobxStore from "../../functions/store";
 
-function BodyGroupFilter(_props: any) {
+function BodyGroupFilter() {
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     
     mobxStore.setFilterGroup(selectedValue);
-    mobxStore.setUpdBody(true);
+    applyFilters();
   }
 
   return (
@@ -14,7 +15,7 @@ function BodyGroupFilter(_props: any) {
       <select className="gr-filter" defaultValue="Groups" onChange={handleChange}>
         <option value="Groups" disabled>Groups</option>
         <option value="" title="All Groups">...</option>
-        {_props.grList?.map((key: string) => (
+        {mobxStore.grList?.map((key: string) => (
           <option key={key} value={key}>{key}</option>
         ))}
       </select>

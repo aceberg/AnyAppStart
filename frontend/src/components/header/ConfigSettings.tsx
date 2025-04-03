@@ -4,7 +4,7 @@ import { apiSaveConf } from "../../functions/api";
 import mobxStore from "../../functions/store";
 import { Conf } from "../../functions/exports";
 
-function ConfigSettings(_props: any) {
+function ConfigSettings() {
 
   const appConfig = mobxStore.appConfig;
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -29,8 +29,7 @@ function ConfigSettings(_props: any) {
     if (JSON.stringify(formData) !== JSON.stringify(appConfig)) {
       await apiSaveConf(formData);
       mobxStore.setAppConfig(formData);
-      console.log("CONFIG:", formData);
-      mobxStore.setUpdHead(true);
+      mobxStore.setUpdHead();
     }
   }
 

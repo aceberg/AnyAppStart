@@ -2,7 +2,7 @@ import ConfigAbout from "./ConfigAbout";
 import ConfigAddItem from "./ConfigAddItem";
 import ConfigSettings from "./ConfigSettings";
 
-const ConfigDropdown = (_props: any) => {
+const ConfigDropdown = () => {
   return (
     <div className="dropdown">
         

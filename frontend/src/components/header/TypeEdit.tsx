@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BootstrapModal from "../Modal";
-import { apiSaveType } from "../../functions/api";
+import { apiSaveType, getTypes } from "../../functions/api";
 import { TypeStruct } from "../../functions/exports";
 import mobxStore from "../../functions/store";
 
@@ -41,11 +41,9 @@ function TypeEdit(_props: any) {
 
   const saveChanges = async () => {
     if (JSON.stringify(formData) !== JSON.stringify(oldType)) {
-      console.log("SAVE1:", oldType);
-      console.log("SAVE2:", formData);
+
       await apiSaveType(oldType, formData);
-      _props.setUpdTypes(true); 
-      mobxStore.setUpdBody(true);
+      mobxStore.setTypeList(await getTypes());
     }
   }
 

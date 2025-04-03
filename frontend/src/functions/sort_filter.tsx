@@ -1,4 +1,5 @@
 import { Item } from "./exports";
+import mobxStore from "./store";
 
 export const sortItems = (items:Item[], field:keyof Item, asc:boolean, trig:boolean) => {
   trig = !trig; // trigger to run sort
@@ -25,8 +26,9 @@ export const filterItems = (items:Item[], field:keyof Item, option: string) => {
   return items;
 };
 
-export const getGroupsList = (items:Item[]) => {
-  
+export const updGroupsList = () => {
+
+  const items = mobxStore.itemList;
   let grList:string[] = [];
 
   if (items !== null) {
@@ -38,5 +40,15 @@ export const getGroupsList = (items:Item[]) => {
   }
   grList.sort();
   
-  return grList;
+  mobxStore.setGrList(grList);
+};
+
+export const applyFilters = () => {
+
+  let tmpItems:Item[] = mobxStore.itemList;
+  
+  tmpItems = filterItems(tmpItems, "Type", mobxStore.getFilterType());
+  tmpItems = filterItems(tmpItems, "Group", mobxStore.getFilterGroup());
+  
+  mobxStore.setItemFiltered(sortItems(tmpItems, mobxStore.getSortField(), mobxStore.getSortWay(), true));
 };

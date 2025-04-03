@@ -45,6 +45,7 @@ function UserCommand(_props: any) {
         body={<>
           <div className="input-group mb-4">
             <input type="text" className="form-control" 
+              placeholder="Set default command in Types menu"
               defaultValue={anyCommand}
               onChange={(e) => setAnyCommand(e.target.value)} 
               onKeyUp={(e) => {e.key === "Enter" ? handleRun() : {}}}></input>

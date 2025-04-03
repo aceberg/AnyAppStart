@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import ItemShow from "./body/ItemShow";
-import { filterItems, getGroupsList, sortItems } from "../functions/sortitems";
+import { sortItems } from "../functions/sort_filter";
 import BodyTabs from "./body/BodyTabs";
 import { Item } from "../functions/exports";
 import { observer } from "mobx-react-lite";
@@ -12,33 +12,17 @@ const Body: React.FC = observer(() => {
   const stateOn = "bi bi-circle-fill text-success";
   const stateOff = "bi bi-circle-fill text-danger";
 
-  const [grList, setGrList] = useState<string[]>([]);
-  const [sortTrigger, setSortTrigger] = useState<boolean>(false);
-
   const handleSort = (sortBy:keyof Item) => {
-    setSortTrigger(!sortTrigger);
     if (sortBy === mobxStore.sortField) {
       mobxStore.setSortWay(!mobxStore.sortWay);
     }
-    mobxStore.setItemFiltered(sortItems(mobxStore.itemFiltered, sortBy, mobxStore.sortWay, sortTrigger));
+    mobxStore.setItemFiltered(sortItems(mobxStore.itemFiltered, sortBy, mobxStore.sortWay, true));
     mobxStore.setSortField(sortBy);
   }
 
-  const fetchData = () => {
-
-    let tmpItems:Item[] = mobxStore.itemList;
-    setGrList(getGroupsList(tmpItems));
-    tmpItems = filterItems(tmpItems, "Type", mobxStore.getFilterType());
-    tmpItems = filterItems(tmpItems, "Group", mobxStore.getFilterGroup());
-    
-    mobxStore.setItemFiltered(sortItems(tmpItems, mobxStore.getSortField(), mobxStore.getSortWay(), sortTrigger));
-  };
-
   useEffect(() => {
-    fetchData();
-    mobxStore.setUpdBody(false);
-    // console.log("BODY UPD");
-  }, [mobxStore.updBody]);
+    console.log("RERENDER Body", new Date());
+  }, []);
 
   return (
     <div className="row mt-2">
@@ -58,7 +42,7 @@ const Body: React.FC = observer(() => {
                 <th>Type<i onClick={() => handleSort("Type")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>Icon</th>
                 <th>Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
-                <th><BodyGroupFilter grList={grList}></BodyGroupFilter><i onClick={() => handleSort("Group")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th><BodyGroupFilter></BodyGroupFilter><i onClick={() => handleSort("Group")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>&nbsp;&nbsp;Action</th>
                 <th>Logs</th>
                 <th>Edit</th>
