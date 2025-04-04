@@ -36,13 +36,16 @@ const Body: React.FC = observer(() => {
             <thead>
               <tr>
                 <th style={{ width: "1%" }}></th>
-                <th><i className="bi bi-circle"></i><i onClick={() => handleSort("State")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th  className={mobxStore.sortField === "State" ? "text-primary" : ""}>
+                  <i className="bi bi-circle-fill"></i><i onClick={() => handleSort("State")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>CPU</th>
                 <th>Mem</th>
-                <th>Type<i onClick={() => handleSort("Type")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th className={mobxStore.sortField === "Type" ? "text-primary" : ""}>
+                  Type<i onClick={() => handleSort("Type")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
                 <th>Icon</th>
-                <th>Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
-                <th><BodyGroupFilter></BodyGroupFilter><i onClick={() => handleSort("Group")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th className={mobxStore.sortField === "Name" ? "text-primary" : ""}>
+                  Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th><BodyGroupFilter></BodyGroupFilter></th>
                 <th>&nbsp;&nbsp;Action</th>
                 <th>Logs</th>
                 <th>Edit</th>

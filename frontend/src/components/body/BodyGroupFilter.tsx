@@ -13,7 +13,7 @@ function BodyGroupFilter() {
   return (
     <>
       <select className="gr-filter" defaultValue="Groups" onChange={handleChange}>
-        <option value="Groups" disabled>Groups</option>
+        <option value="Groups" disabled>Group</option>
         <option value="" title="All Groups">...</option>
         {mobxStore.grList?.map((key: string) => (
           <option key={key} value={key}>{key}</option>
