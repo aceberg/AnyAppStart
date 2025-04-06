@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BootstrapModal from "../Modal";
+import BootstrapModal from "./../Modal";
 import { apiSaveConf } from "../../functions/api";
 import mobxStore from "../../functions/store";
 import { Conf } from "../../functions/exports";

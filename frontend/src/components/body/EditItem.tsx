@@ -1,9 +1,9 @@
 import { useState } from "react";
-import BootstrapModal from "../Modal";
+import BootstrapModal from "./../Modal";
 import { apiSaveItem } from "../../functions/api";
 import mobxStore from "../../functions/store";
 import { Item } from "../../functions/exports";
-import { fetchItems } from "../../functions/updstate";
+import { prepareAllData, updAllItems } from "../../functions/updstate";
 
 function EditItem(_props: any) {
 
@@ -45,8 +45,9 @@ function EditItem(_props: any) {
     if (JSON.stringify(formData) !== JSON.stringify(item)) {
       await apiSaveItem(item, formData);
       
+      prepareAllData();
       setTimeout(() => {
-        fetchItems();
+        updAllItems();
       }, 1000);
     }
   }

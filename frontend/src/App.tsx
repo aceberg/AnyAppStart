@@ -3,12 +3,12 @@ import './App.css'
 import Body from './components/Body'
 import Header from './components/Header'
 import { useEffect } from "react";
-import { fetchItems } from "./functions/updstate";
+import { startUpdateCycle } from "./functions/updstate";
 
 function App() {
 
   useEffect(() => {
-    fetchItems();
+    startUpdateCycle();
   }, []);
 
   return (

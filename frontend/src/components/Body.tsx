@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import ItemShow from "./body/ItemShow";
 import { sortItems } from "../functions/sort_filter";
 import BodyTabs from "./body/BodyTabs";
@@ -20,10 +19,6 @@ const Body: React.FC = observer(() => {
     mobxStore.setSortField(sortBy);
   }
 
-  useEffect(() => {
-    console.log("RERENDER Body", new Date());
-  }, []);
-
   return (
     <div className="row mt-2">
       <div className="col-md">
@@ -36,16 +31,21 @@ const Body: React.FC = observer(() => {
             <thead>
               <tr>
                 <th style={{ width: "1%" }}></th>
-                <th  className={mobxStore.sortField === "State" ? "text-primary" : ""}>
-                  <i className="bi bi-circle-fill"></i><i onClick={() => handleSort("State")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th>
+                  <i className="bi bi-circle"></i><i onClick={() => handleSort("State")} 
+                  className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "State" ? "text-success" : "text-body")}></i></th>
                 <th>CPU</th>
                 <th>Mem</th>
-                <th className={mobxStore.sortField === "Type" ? "text-primary" : ""}>
-                  Type<i onClick={() => handleSort("Type")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
+                <th>
+                  Type<i onClick={() => handleSort("Type")} 
+                  className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "Type" ? "text-success" : "text-body")}></i></th>
                 <th>Icon</th>
-                <th className={mobxStore.sortField === "Name" ? "text-primary" : ""}>
-                  Name<i onClick={() => handleSort("Name")} className="bi bi-sort-down-alt text-primary shade-hover"></i></th>
-                <th><BodyGroupFilter></BodyGroupFilter></th>
+                <th>
+                  Name<i onClick={() => handleSort("Name")} 
+                  className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "Name" ? "text-success" : "text-body")}></i></th>
+                <th><BodyGroupFilter></BodyGroupFilter>
+                  <i onClick={() => handleSort("Group")} 
+                  className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "Group" ? "text-success" : "text-body")}></i></th>
                 <th>&nbsp;&nbsp;Action</th>
                 <th>Logs</th>
                 <th>Edit</th>

@@ -8,6 +8,50 @@ interface Res {
   Out: string;
 }
 
+// runs once at the start
+export const startUpdateCycle = () => {
+
+  prepareAllData();
+
+  setTimeout(() => {
+    updAllItems();
+  }, 1000);
+
+  setInterval(() => {
+    updAllItems();
+  }, 60000); // 60000 ms = 1 minute
+}
+
+export const prepareAllData = async () => {
+
+  const types:TypeStruct[] = await getTypes();
+  mobxStore.setTypeList(types);
+
+  let items:Item[] = await getItems();
+
+  types.forEach(type => {
+    items.map(item => {
+      if (item.Type === type.Name) {
+        item.AnyCom = type.AnyCom;
+        return item
+      } else {
+        return item
+      }
+    })
+  });
+
+  mobxStore.setItemList(items);
+  applyFilters();
+  updGroupsList();
+}
+
+export function updAllItems() {
+
+  for (let item of mobxStore.itemList) {
+    updItemState(item);
+  }
+}
+
 export async function updItemState(item:Item) {
   
   let res:Res;
@@ -32,47 +76,4 @@ export async function updItemState(item:Item) {
   }
 
   mobxStore.updItemList(item);
-}
-
-export function updAllItems() {
-
-  for (let item of mobxStore.itemList) {
-    updItemState(item);
-  }
-}
-
-export const fetchItems = () => {
-
-  setAnyCom();
-
-  setTimeout(() => {
-    updAllItems();
-  }, 1000);
-
-  setInterval(() => {
-    updAllItems();
-  }, 60000); // 60000 ms = 1 minute
-}
-
-export const setAnyCom = async () => {
-
-  const types:TypeStruct[] = await getTypes();
-  mobxStore.setTypeList(types);
-
-  let items:Item[] = await getItems();
-
-  types.forEach(type => {
-    items.map(item => {
-      if (item.Type === type.Name) {
-        item.AnyCom = type.AnyCom;
-        return item
-      } else {
-        return item
-      }
-    })
-  });
-
-  mobxStore.setItemList(items);
-  applyFilters();
-  updGroupsList();
 }

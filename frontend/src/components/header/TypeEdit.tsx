@@ -1,5 +1,5 @@
 import { useState } from "react";
-import BootstrapModal from "../Modal";
+import BootstrapModal from "./../Modal";
 import { apiSaveType, getTypes } from "../../functions/api";
 import { TypeStruct } from "../../functions/exports";
 import mobxStore from "../../functions/store";
