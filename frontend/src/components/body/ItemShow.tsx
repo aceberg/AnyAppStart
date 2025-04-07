@@ -28,7 +28,6 @@ function ItemShow(_props: any) {
 
   return (
     <>
-      <td>{_props.item.Type}<Toaster position="top-center"/></td>
       <td>
         {_props.item.Icon
         ? <a href={_props.item.Link} target="_blank">
@@ -43,7 +42,8 @@ function ItemShow(_props: any) {
           : _props.item.Name
         }
       </td>
-      <td>{_props.item.Group}</td>
+      <td onClick={() => _props.handleNavigate(_props.item)}>{_props.item.Type}<Toaster position="top-center"/></td>
+      <td onClick={() => _props.handleNavigate(_props.item)}>{_props.item.Group}</td>
       <td>
         <i className="bi bi-play shade-hover me-1 fs-5" onClick={() => handleExec("Start")} title="Start"></i>
         <i className="bi bi-arrow-clockwise shade-hover me-1 fs-5" onClick={() => handleExec("Restart")} title="Restart"></i>

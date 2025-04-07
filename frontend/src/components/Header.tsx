@@ -40,7 +40,7 @@ const Header: React.FC = observer(() => {
   }, [mobxStore.updHead]);
 
   const handleReload = () => {
-    window.location.reload();
+    window.location.href = "/";
   };
 
   return (

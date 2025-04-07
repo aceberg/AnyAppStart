@@ -5,8 +5,14 @@ import { Item } from "../functions/exports";
 import { observer } from "mobx-react-lite";
 import mobxStore from "../functions/store";
 import BodyGroupFilter from "./body/BodyGroupFilter";
+import { useNavigate } from "react-router-dom";
 
 const Body: React.FC = observer(() => {
+
+  const navigate = useNavigate();
+  const handleNavigate = (item: Item) => {
+    navigate("/item/"+item.ID);
+  }
 
   const stateOn = "bi bi-circle-fill text-success";
   const stateOff = "bi bi-circle-fill text-danger";
@@ -32,17 +38,16 @@ const Body: React.FC = observer(() => {
               <tr>
                 <th style={{ width: "1%" }}></th>
                 <th>
-                  <i className="bi bi-circle"></i><i onClick={() => handleSort("State")} 
-                  className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "State" ? "text-success" : "text-body")}></i></th>
+                  <i className="bi bi-circle"></i><i onClick={() => handleSort("State")} className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "State" ? "text-success" : "text-body")}></i></th>
                 <th>CPU</th>
                 <th>Mem</th>
-                <th>
-                  Type<i onClick={() => handleSort("Type")} 
-                  className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "Type" ? "text-success" : "text-body")}></i></th>
                 <th>Icon</th>
                 <th>
                   Name<i onClick={() => handleSort("Name")} 
                   className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "Name" ? "text-success" : "text-body")}></i></th>
+                <th>
+                  Type<i onClick={() => handleSort("Type")} 
+                  className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "Type" ? "text-success" : "text-body")}></i></th>
                 <th><BodyGroupFilter></BodyGroupFilter>
                   <i onClick={() => handleSort("Group")} 
                   className={"bi bi-sort-down-alt shade-hover " + (mobxStore.sortField === "Group" ? "text-success" : "text-body")}></i></th>
@@ -54,11 +59,11 @@ const Body: React.FC = observer(() => {
             <tbody>
             {mobxStore.itemFiltered?.map((item, i) => (
               <tr key={i}>
-                <td className="text-primary text-opacity-75">{i+1}.</td>
-                <td><i className={item.State == "on" ? stateOn : stateOff }></i></td>
-                <td>{item.CPU}</td>
-                <td>{item.Mem}</td>
-                <ItemShow item={item}></ItemShow>
+                <td onClick={() => handleNavigate(item)} className="text-primary text-opacity-75">{i+1}.</td>
+                <td onClick={() => handleNavigate(item)}><i className={item.State == "on" ? stateOn : stateOff }></i></td>
+                <td onClick={() => handleNavigate(item)}>{item.CPU}</td>
+                <td onClick={() => handleNavigate(item)}>{item.Mem}</td>
+                <ItemShow item={item} handleNavigate={handleNavigate}></ItemShow>
               </tr>
             ))}
             </tbody>
