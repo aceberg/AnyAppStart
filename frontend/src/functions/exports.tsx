@@ -32,3 +32,17 @@ export interface TypeStruct {
     SSH: string;
     AnyCom: string;
 };
+
+export const emptyItem:Item = {
+    ID: 0,
+    Group: "",
+    Name: "",
+    Type: "",
+    Link: "",
+    Icon: "",
+    State: "",
+    Exec: "",
+    CPU: "",
+    Mem: "",
+    AnyCom: "",
+};

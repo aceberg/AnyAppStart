@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { apiSaveItem } from "../../functions/api";
 import mobxStore from "../../functions/store";
-import { Item } from "../../functions/exports";
+import { emptyItem, Item } from "../../functions/exports";
 import { prepareAllData, updAllItems } from "../../functions/updstate";
 
 function EditItemForm(_props: any) {
@@ -43,14 +43,11 @@ function EditItemForm(_props: any) {
   }
   
   const handleDel = async () => {
-    let delData = formData;
-    delData.Name = "";
-    await saveChanges(delData);
+    await saveChanges(emptyItem);
     _props.onDelete();
   }
 
   const saveChanges = async (data: Item) => {
-    // console.log("Item to save:", data);
     await apiSaveItem(item, data);
     prepareAllData();
     setTimeout(() => {
