@@ -14,7 +14,7 @@ function App() {
   }, []);
 
   return (
-    <div className="container-lg mb-2">
+    <div className="container-lg mb-4">
       <Header />
       <Router>
         <Routes>

@@ -3,31 +3,31 @@ import mobxStore from "../functions/store";
 import EditItemForm from "./body/EditItemForm";
 import UserCommandForm from "./body/UserCommandForm";
 import LogsOutput from "./body/LogsOutput";
+import { Item } from "../functions/exports";
+import ItemPageTopLine from "./ItemPageTopLine";
 
 function ItemPage() {
 
+  const params = useParams();
   const navigate = useNavigate();
 
-  const params = useParams();
-  const item = mobxStore.itemList.find(item => item.ID.toString() === params.id);
-  console.log("ID:", item?.Name);
+  const item = mobxStore.itemList.find(i => i.ID.toString() === params.id) as Item;
+  console.log("ID:", item.Name);
 
   return (
     <>
-    <button className="btn btn-outline-primary" onClick={() => navigate("/")}>
-      <i className="bi bi-arrow-90deg-left"></i>&nbsp;&nbsp;Back
-    </button>
-    <div className="row mt-2">
-      <div className="col-md">
+    <ItemPageTopLine item={item} goBack={() => navigate("/")} />
+    <div className="row">
+      <div className="col-md mt-4">
       <div className="card border-primary">
         <div className="card-header">Item</div>
         <div className="card-body">
-          <EditItemForm item={item} onSave={() => void 0} 
+          <EditItemForm item={item} onSave={() => navigate("/")} 
             onDelete={() => navigate("/")} />
         </div>
       </div>
       </div>
-      <div className="col-md">
+      <div className="col-md mt-4">
         <div className="card border-primary">
           <div className="card-header">Run any command</div>
           <div className="card-body">
@@ -36,12 +36,12 @@ function ItemPage() {
         </div>
       </div>
     </div>
-    <div className="row mt-2">
+    <div className="row mt-4">
       <div className="col-md">
         <div className="card border-primary">
           <div className="card-header">Logs</div>
           <div className="card-body">
-            <LogsOutput item={item} />
+            <LogsOutput item={item} height="500px" />
           </div>
         </div>
       </div>

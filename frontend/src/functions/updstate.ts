@@ -76,4 +76,6 @@ export async function updItemState(item:Item) {
   }
 
   mobxStore.updItemList(item);
+
+  return item;
 }

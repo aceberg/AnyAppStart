@@ -31,7 +31,7 @@ function LogsOutput(_props: any) {
   }, []);
 
   return (
-    <div className="overflow-auto" style={{ maxHeight: "600px" }}>
+    <div className="overflow-auto" style={{ height: _props.height }}>
       {isLoading ? <pre>Loading logs for {_props.item.Name}...</pre> : <pre>{logs}</pre>}
     </div>
   )

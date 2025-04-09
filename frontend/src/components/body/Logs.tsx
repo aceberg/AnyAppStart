@@ -13,7 +13,7 @@ function Logs(_props: any) {
         isOpen={isModalOpen}
         title={"Logs: "+_props.item.Name}
         size="modal-xl"
-        body={<LogsOutput item={_props.item}></LogsOutput>}
+        body={<LogsOutput item={_props.item} height="800px"></LogsOutput>}
         onClose={() => setModalOpen(false)}
       />
     </>
