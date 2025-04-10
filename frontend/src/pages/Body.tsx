@@ -1,10 +1,10 @@
-import ItemShow from "./body/ItemShow";
+import ItemShow from "../components/body/ItemShow";
 import { sortItems } from "../functions/sort_filter";
-import BodyTabs from "./body/BodyTabs";
+import BodyTabs from "../components/body/BodyTabs";
 import { Item } from "../functions/exports";
 import { observer } from "mobx-react-lite";
 import mobxStore from "../functions/store";
-import BodyGroupFilter from "./body/BodyGroupFilter";
+import BodyGroupFilter from "../components/body/BodyGroupFilter";
 import { useNavigate } from "react-router-dom";
 
 const Body: React.FC = observer(() => {

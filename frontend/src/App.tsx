@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route }  from "react-router-dom";
 import "bootstrap/js/dist/dropdown";
 import './App.css'
-import Body from './components/Body'
+import Body from './pages/Body'
 import Header from './components/Header'
 import { useEffect } from "react";
 import { startUpdateCycle } from "./functions/updstate";
-import ItemPage from './components/ItemPage';
+import ItemPage from "./pages/ItemPage";
 
 function App() {
 
