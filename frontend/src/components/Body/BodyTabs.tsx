@@ -1,9 +1,9 @@
+import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
+
 import mobxStore from "../../functions/store";
 import { TypeStruct } from "../../functions/exports";
 import { applyFilters } from "../../functions/sort_filter";
-import { observer } from "mobx-react-lite";
-
 
 const BodyTabs: React.FC = observer(() => {
 

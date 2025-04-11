@@ -1,6 +1,7 @@
 import { useState } from "react";
-import BootstrapModal from "./../Modal";
-import UserCommandForm from "./UserCommandForm";
+
+import BootstrapModal from "../All/Modal";
+import UserCommandForm from "../All/UserCommandForm";
 
 function UserCommand(_props: any) {
 

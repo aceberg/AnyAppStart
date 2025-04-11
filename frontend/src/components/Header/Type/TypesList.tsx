@@ -1,6 +1,8 @@
-import TypeEdit from "./TypeEdit";
-import mobxStore from "../../functions/store";
 import { observer } from "mobx-react-lite";
+
+import mobxStore from "../../../functions/store";
+
+import TypeEdit from "./TypeEdit";
 
 const TypesList: React.FC = observer(() => {
 

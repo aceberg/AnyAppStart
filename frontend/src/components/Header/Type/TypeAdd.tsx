@@ -1,4 +1,5 @@
-import { TypeStruct } from "../../functions/exports"
+import { TypeStruct } from "../../../functions/exports"
+
 import TypeEdit from "./TypeEdit"
 
 function TypeAdd() {

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import BootstrapModal from "./../Modal";
-import LogsOutput from "./LogsOutput";
+
+import BootstrapModal from "../All/Modal";
+import LogsOutput from "../All/LogsOutput";
 
 function Logs(_props: any) {
 

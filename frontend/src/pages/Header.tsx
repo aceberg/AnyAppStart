@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import ConfigDropdown from "./header/ConfigDropdown";
-import TypesDropdown from "./header/TypesDropdown";
+import { observer } from "mobx-react-lite";
+
 import mobxStore from "../functions/store";
 import { getConfig } from "../functions/api";
 import { Conf } from "../functions/exports";
-import { observer } from "mobx-react-lite";
+
+import ConfigDropdown from "../components/Header/Config/ConfigDropdown";
+import TypesDropdown from "../components/Header/Type/TypesDropdown";
 
 const Header: React.FC = observer(() => {
 

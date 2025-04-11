@@ -1,5 +1,6 @@
-import { emptyItem } from "../../functions/exports";
-import EditItem from "../body/EditItem"
+import { emptyItem } from "../../../functions/exports";
+
+import EditItem from "../../All/EditItem"
 
 
 function ConfigAddItem() {

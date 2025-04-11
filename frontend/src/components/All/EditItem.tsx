@@ -1,5 +1,6 @@
 import { useState } from "react";
-import BootstrapModal from "./../Modal";
+
+import BootstrapModal from "./Modal";
 import EditItemForm from "./EditItemForm";
 
 function EditItem(_props: any) {

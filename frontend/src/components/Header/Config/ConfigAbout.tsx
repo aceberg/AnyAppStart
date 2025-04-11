@@ -1,5 +1,6 @@
 import { useState } from "react";
-import BootstrapModal from "./../Modal";
+
+import BootstrapModal from "../../All/Modal";
 
 function ConfigAbout() {
 

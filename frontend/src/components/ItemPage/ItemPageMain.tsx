@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import { emptyItem, Item } from "../../functions/exports";
 import mobxStore from "../../functions/store";
+
 import ItemPageTopLine from "./ItemPageTopLine";
-import EditItemForm from "../body/EditItemForm";
-import UserCommandForm from "../body/UserCommandForm";
-import LogsOutput from "../body/LogsOutput";
+import EditItemForm from "../All/EditItemForm";
+import UserCommandForm from "../All/UserCommandForm";
+import LogsOutput from "../All/LogsOutput";
 
 type ChildProps = {
   id: string;
