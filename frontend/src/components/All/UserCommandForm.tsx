@@ -30,15 +30,17 @@ function UserCommandForm(_props: any) {
 
   return (
     <>
-      <div className="input-group mb-4">
-        <input type="text" className="form-control" 
-          placeholder="Set default command in Types menu"
-          defaultValue={anyCommand}
-          onChange={(e) => setAnyCommand(e.target.value)} 
-          onKeyUp={(e) => {e.key === "Enter" ? handleRun() : {}}}></input>
-        <button type="submit" className="btn btn-outline-primary" 
-          onClick={handleRun}>Run</button>
-      </div>
+      <form autoComplete="on" onSubmit={e => e.preventDefault()}>
+        <div className="input-group mb-4">
+          <input type="text" name="any-com" className="form-control" 
+            placeholder="Set default command in Types menu"
+            defaultValue={anyCommand}
+            onChange={(e) => setAnyCommand(e.target.value)} 
+            onKeyUp={(e) => {e.key === "Enter" ? handleRun() : {}}}
+            ></input>
+          <button className="btn btn-outline-primary" type="submit" onClick={handleRun}>Run</button>
+        </div>
+      </form>
       <hr></hr>
       {result}
       <hr></hr>

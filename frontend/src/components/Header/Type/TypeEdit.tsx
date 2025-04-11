@@ -94,7 +94,7 @@ function TypeEdit(_props: any) {
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>
-              <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>
+              <button className="btn btn-primary" type="submit" onClick={handleSave}>Save</button>
             </div>
           </form>
         }

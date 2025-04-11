@@ -7,21 +7,7 @@ import { prepareAllData, updAllItems } from "../../functions/updstate";
 
 function EditItemForm(_props: any) {
 
-  const item:Item = {
-    ID: _props.item.ID,
-    Group: _props.item.Group,
-    Name: _props.item.Name,
-    Type: _props.item.Type,
-    Link: _props.item.Link,
-    Icon: _props.item.Icon,
-    Exec: "",
-    State: "",
-    CPU: "",
-    Mem: "",
-    AnyCom: _props.item.AnyCom,
-  };
-
-  const [formData, setFormData] = useState<Item>(item);
+  const [formData, setFormData] = useState<Item>(_props.item);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -49,7 +35,7 @@ function EditItemForm(_props: any) {
   }
 
   const saveChanges = async (data: Item) => {
-    await apiSaveItem(item, data);
+    await apiSaveItem(_props.item, data);
     prepareAllData();
     setTimeout(() => {
       updAllItems();
@@ -58,11 +44,11 @@ function EditItemForm(_props: any) {
 
   return (
     <>
-          <form>
+          <form autoComplete="on" onSubmit={e => e.preventDefault()}>
             <label htmlFor="gid" className="form-label text-primary">Group</label>
-            <input className="form-control mb-3" defaultValue={item.Group} id="gid" name="Group" onChange={handleChange} placeholder="Not empty string"></input>
+            <input className="form-control mb-3" defaultValue={_props.item.Group} id="gid" name="Group" type="text" onChange={handleChange} placeholder="Not empty string"></input>
             <label htmlFor="nid" className="form-label text-primary">Name</label>
-            <input className="form-control mb-3" defaultValue={item.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
+            <input className="form-control mb-3" defaultValue={_props.item.Name} id="nid" name="Name" type="text" onChange={handleChange} placeholder="Not empty string"></input>
             <label htmlFor="tid" className="form-label text-primary">Type</label>
             <select className="form-select mb-3" id="tid" onChange={handleSelectType} defaultValue={formData.Type}>
               <option value="" disabled>Select type</option>
@@ -71,13 +57,13 @@ function EditItemForm(_props: any) {
               ))}
             </select>
             <label htmlFor="iid" className="form-label text-primary">Icon</label>
-            <input className="form-control mb-3" defaultValue={item.Icon} id="iid" name="Icon" onChange={handleChange} placeholder="Link to Icon (optional)"></input>
+            <input className="form-control mb-3" defaultValue={_props.item.Icon} id="iid" name="Icon" onChange={handleChange} placeholder="Link to Icon (optional)"></input>
             <label htmlFor="lid" className="form-label text-primary">Link</label>
-            <input className="form-control mb-3" defaultValue={item.Link} id="lid" name="Link" onChange={handleChange} placeholder="URL (optional)"></input>
+            <input className="form-control mb-3" defaultValue={_props.item.Link} id="lid" name="Link" onChange={handleChange} placeholder="URL (optional)"></input>
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <button className="btn btn-danger" type="button" onClick={handleDel}>Delete</button>
-              <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>
+              <button className="btn btn-outline-primary" type="submit" onClick={handleSave}>Save</button>
             </div>
           </form>
     </>

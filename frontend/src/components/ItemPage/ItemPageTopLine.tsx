@@ -34,7 +34,9 @@ const ItemPageTopLine: React.FC<ChildProps> = ({ item, goBack }) => {
         },
       });
     }
-    updateItem();
+    setTimeout(() => {
+      updateItem();
+    }, 1000);
   }
 
   const updateItem = async () => {

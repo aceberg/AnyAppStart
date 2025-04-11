@@ -32,9 +32,24 @@ const ItemPageMain: React.FC<ChildProps> = ({ id }) => {
       <div className="row">
         <div className="col-md mt-4">
         <div className="card border-primary">
-          <div className="card-header">Item</div>
+          <div className="card-header d-flex justify-content-start">
+            <div>
+            {item.Icon
+            ? <a href={item.Link} target="_blank" className="pe-3">
+                <img src={item.Icon} width={25} height={25}></img>
+              </a>
+            : <></>
+            }
+            </div>
+            <div>
+            {item.Link
+              ? <a href={item.Link} target="_blank">{item.Name}</a> 
+              : item.Name
+            }
+            </div>
+          </div>
           <div className="card-body">
-            <EditItemForm item={item} onSave={() => navigate("/")} 
+            <EditItemForm item={item} onSave={() => {}} 
               onDelete={() => navigate("/")} />
           </div>
         </div>

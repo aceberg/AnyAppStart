@@ -30,22 +30,18 @@ function ItemShow(_props: any) {
 
   return (
     <>
-      <td>
-        {_props.item.Icon
-        ? <a href={_props.item.Link} target="_blank">
-            <img src={_props.item.Icon} width={30} height={30}></img>
-          </a>
-        : <></>
-        }
-      </td>
-      <td>
-        {_props.item.Link
-          ? <a href={_props.item.Link} target="_blank">{_props.item.Name}</a> 
-          : _props.item.Name
-        }
-      </td>
-      <td onClick={() => _props.handleNavigate(_props.item)}>{_props.item.Type}<Toaster position="top-center"/></td>
-      <td onClick={() => _props.handleNavigate(_props.item)}>{_props.item.Group}</td>
+      {_props.item.Icon
+      ? <td><a href={_props.item.Link} target="_blank">
+          <img src={_props.item.Icon} width={30} height={30}></img>
+        </a></td>
+      : <td onClick={() => _props.handleNavigate(_props.item.ID)}></td>
+      }
+      {_props.item.Link
+        ? <td><a href={_props.item.Link} target="_blank">{_props.item.Name}</a></td>
+        : <td onClick={() => _props.handleNavigate(_props.item.ID)}>{_props.item.Name}</td>
+      }
+      <td onClick={() => _props.handleNavigate(_props.item.ID)}>{_props.item.Type}<Toaster position="top-center"/></td>
+      <td onClick={() => _props.handleNavigate(_props.item.ID)}>{_props.item.Group}</td>
       <td>
         <i className="bi bi-play shade-hover me-1 fs-5" onClick={() => handleExec("Start")} title="Start"></i>
         <i className="bi bi-arrow-clockwise shade-hover me-1 fs-5" onClick={() => handleExec("Restart")} title="Restart"></i>

@@ -2,6 +2,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## [0.1.5] - 2025-04-
+### Added
+- Item Page
+- Highlight sorted field
+- Auto update for logs
+- UI update
+
 ## [0.1.4] - 2025-04-02
 ### Added
 - User defined command [#2](https://github.com/aceberg/AnyAppStart/issues/2)

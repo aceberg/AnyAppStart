@@ -13,8 +13,8 @@ import BodyGroupFilter from "../components/Body/BodyGroupFilter";
 const Body: React.FC = observer(() => {
 
   const navigate = useNavigate();
-  const handleNavigate = (item: Item) => {
-    navigate("/item/"+item.ID);
+  const handleNavigate = (id: number) => {
+    navigate("/item/"+id);
   }
 
   const stateOn = "bi bi-circle-fill text-success";
@@ -61,11 +61,11 @@ const Body: React.FC = observer(() => {
             </thead>
             <tbody>
             {mobxStore.itemFiltered?.map((item, i) => (
-              <tr key={i}>
-                <td onClick={() => handleNavigate(item)} className="text-primary text-opacity-75">{i+1}.</td>
-                <td onClick={() => handleNavigate(item)}><i className={item.State == "on" ? stateOn : stateOff }></i></td>
-                <td onClick={() => handleNavigate(item)}>{item.CPU}</td>
-                <td onClick={() => handleNavigate(item)}>{item.Mem}</td>
+              <tr key={i} style={{ cursor: "pointer" }}>
+                <td onClick={() => handleNavigate(item.ID)} className="text-primary text-opacity-75">{i+1}.</td>
+                <td onClick={() => handleNavigate(item.ID)}><i className={item.State == "on" ? stateOn : stateOff }></i></td>
+                <td onClick={() => handleNavigate(item.ID)}>{item.CPU}</td>
+                <td onClick={() => handleNavigate(item.ID)}>{item.Mem}</td>
                 <ItemShow item={item} handleNavigate={handleNavigate}></ItemShow>
               </tr>
             ))}

@@ -87,7 +87,7 @@ function ConfigSettings() {
             <hr></hr>
             <div className='d-flex justify-content-between'>
               <span></span>
-              <button className="btn btn-primary" type="button" onClick={handleSave}>Save</button>
+              <button className="btn btn-primary" type="submit" onClick={handleSave}>Save</button>
             </div>
           </form>
         }
