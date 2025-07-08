@@ -2,8 +2,10 @@ package service
 
 import (
 	// "log"
+	"context"
 	"os/exec"
 	"strings"
+	"time"
 
 	"github.com/aceberg/AnyAppStart/internal/check"
 	"github.com/aceberg/AnyAppStart/internal/models"
@@ -40,9 +42,12 @@ func anyExec(name string, ssh string, str string) (bool, string) {
 		str = ssh + " " + str
 	}
 
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
 	str = strings.Replace(str, "$ITEMNAME", name, -1)
 
-	cmd := exec.Command("sh", "-c", str)
+	cmd := exec.CommandContext(ctx, "sh", "-c", str)
 
 	out, err := cmd.CombinedOutput()
 	str = string(out)
