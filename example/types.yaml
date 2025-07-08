@@ -12,7 +12,7 @@ Systemd:
     Logs: sudo systemctl status $ITEMNAME
     Mem: sudo systemctl status $ITEMNAME | grep Memory | awk '{print $2}'
     Restart: sudo systemctl restart $ITEMNAME
-    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host'
     Start: sudo systemctl start $ITEMNAME
     State: sudo systemctl | grep running | grep $ITEMNAME
     Stop: sudo systemctl stop $ITEMNAME
@@ -21,7 +21,7 @@ VM:
     Logs: sudo journalctl -u libvirtd.service
     Mem: ""
     Restart: sudo virsh reboot $ITEMNAME
-    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host'
     Start: sudo virsh start $ITEMNAME
     State: sudo virsh list --state-running | grep $ITEMNAME
     Stop: sudo virsh shutdown $ITEMNAME
@@ -30,7 +30,7 @@ ssh-Docker:
     Logs: docker logs $ITEMNAME
     Mem: docker stats --no-stream --format '{{ .MemUsage }}' $ITEMNAME | awk '{print $1}'
     Restart: docker restart $ITEMNAME
-    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host'
     Start: docker start $ITEMNAME
     State: docker ps --filter status=running | grep $ITEMNAME
     Stop: docker stop $ITEMNAME
@@ -39,7 +39,7 @@ ssh-Systemd:
     Logs: sudo systemctl status $ITEMNAME
     Mem: sudo systemctl status $ITEMNAME | grep Memory | awk '{print $2}'
     Restart: sudo systemctl restart $ITEMNAME
-    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
+    SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host'
     Start: sudo systemctl start $ITEMNAME
     State: sudo systemctl | grep running | grep $ITEMNAME
     Stop: systemctl stop $ITEMNAME

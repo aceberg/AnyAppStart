@@ -74,7 +74,7 @@ function TypeEdit(_props: any) {
             <input className="form-control mb-3" defaultValue={oldType.Name} id="nid" name="Name" onChange={handleChange} placeholder="Not empty string"></input>
             <p>Use variable <code>$ITEMNAME</code> in the commands below</p>
             <label htmlFor="sshid" className="form-label text-primary">SSH (optional)</label>
-            <input className="form-control mb-3" defaultValue={oldType.SSH} id="sshid" name="SSH" onChange={handleChange} placeholder="ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f"></input>
+            <input className="form-control mb-3" defaultValue={oldType.SSH} id="sshid" name="SSH" onChange={handleChange} placeholder="ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host"></input>
             <label htmlFor="gid" className="form-label text-primary">Start</label>
             <input className="form-control mb-3" defaultValue={oldType.Start} id="gid" name="Start" onChange={handleChange} placeholder="docker start $ITEMNAME"></input>
             <label htmlFor="oid" className="form-label text-primary">Stop</label>

@@ -67,7 +67,7 @@ sudo systemctl enable --now AnyAppStart@$USER.service
 
 To be able to pass commands over SSH from Docker container, you need to put SSH private key and `known_host` file in AnyAppStart config dir. Then, add a correct `SSH` string to `types.yaml` file. Example:
 ```yaml
-SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host -f '
+SSH: 'ssh -i /data/AnyAppStart/priv_key -oUserKnownHostsFile=/data/AnyAppStart/known_hosts user@remote-host'
 ```
 
 </details>
