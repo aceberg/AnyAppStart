@@ -2,10 +2,9 @@ package service
 
 import (
 	// "log"
-	"context"
+
 	"os/exec"
 	"strings"
-	"time"
 
 	"github.com/aceberg/AnyAppStart/internal/check"
 	"github.com/aceberg/AnyAppStart/internal/models"
@@ -42,14 +41,14 @@ func anyExec(name string, ssh string, str string) (bool, string) {
 		str = ssh + " " + str
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-
 	str = strings.Replace(str, "$ITEMNAME", name, -1)
 
-	cmd := exec.CommandContext(ctx, "sh", "-c", str)
+	cmd := exec.Command("sh", "-c", str)
 
 	out, err := cmd.CombinedOutput()
+
+	_ = cmd.Process.Kill()
+
 	str = string(out)
 	l := len(str)
 	if l > 10000 {
