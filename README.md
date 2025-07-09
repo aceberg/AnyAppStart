@@ -26,7 +26,6 @@ Control panel to `Start`/`Stop`/`Restart`/`View Logs` for Docker, Systemd, VMs o
 
 </details>
 
-
 ## Quick start (Docker, Binary)
 <details>
   <summary>Expand</summary>
