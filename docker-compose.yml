@@ -14,6 +14,7 @@ services:
     - 8855:8855
     volumes:
     - ~/.dockerdata/AnyAppStart:/data/AnyAppStart
+    # - /var/run/docker.sock:/var/run/docker.sock # mount docker socket if needed
     command: "-n http://YOUR-ADDRESS:8850" # node-bootstrap path, optional
     environment:
       TZ: Asia/Novosibirsk    # required, default: ""
